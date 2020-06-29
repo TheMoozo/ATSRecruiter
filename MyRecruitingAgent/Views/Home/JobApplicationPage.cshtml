@@ -1,0 +1,144 @@
+﻿@model MyRecruitingAgent.Models.ViewModels.JobApplicationPageViewModel
+@{
+    ViewBag.Title = "JobApplicationPage";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    int Qcounter = 0;
+    int AnswerCounter = 0;
+}
+<div class="row">
+
+    <div class="col-md-12">
+        <br />
+        <img class="img-responsive pt-5 pb-5 pl-0 pr-5" src="~/Content/Images/ExternalLogo/@Model.RecruiterObj.RecId/@Model.CareerPageObj.ExternalLogo" style="max-height:100px;">
+
+        <h2>Apply For Job</h2>
+        <div class="row">
+            <form action="@Url.Action("JobApplicationPage","Home")" method="post" enctype="multipart/form-data">
+                <div class="col-md-6">
+                    <h4>Job Details</h4>
+                    <label>Job Name</label>
+                    <h5>@Model.JobObj.JobName</h5>
+
+                    <label>Job Salary</label>
+                    <h5>@Model.JobObj.JobSalary (@Model.JobObj.Currency)</h5>
+                    <label>Job Location</label>
+                    <h5>@Model.JobObj.JobLocation, @Model.JobObj.JobCity, @Model.JobObj.JobState, @Model.JobObj.JobCountry </h5>
+                    <label>Job Type</label>
+                    <h5>@Model.JobObj.JobType</h5>
+                    <label>Experience Required</label>
+                    <h5>@Model.JobObj.Experience Year(s)</h5>
+                    <label>Qualification</label>
+                    <h5>@Model.JobObj.Qualification</h5>
+                    <label>Qualification Type</label>
+                    <h5>
+                        @if (Model.JobObj.QualificationType == 1)
+                        {
+                            @:Degree
+                        }
+                        else if (Model.JobObj.QualificationType == 2)
+                        {
+                            @:Diploma
+                        }
+                    </h5>
+                    <label>Job Intro</label>
+                    <h5>@Model.JobObj.JobIntro</h5>
+                    <label>Job Description</label>
+                    <h5>@Model.JobObj.JobDescription</h5>
+
+                </div>
+                <div class="col-md-6">
+                    <h4>Candiate Form</h4>
+                    <div class="row">
+
+                        <div class="col-md-6">
+                            @*@Html.HiddenFor(x => x.RecruiterObj.RecId)*@
+                            <input type="hidden" value="@Model.RecruiterObj.RecId" name="Model.RecruiterObj.RecId" />
+                            @*@Html.HiddenFor(x => x.)*@
+                            <input type="hidden" value="@Model.JobObj.JobId" name="Model.JobObj.JobId" />
+                            @*@Html.HiddenFor(x => x.CandidateObj.CanId)*@
+                            <input type="hidden" @*value="@Model.CandidateObj.CanId"*@ name="Model.CandidateObj.CanId" />
+
+                            <label>First Name</label>
+                            <input type="text" @*value="@Model.CandidateObj.FirstName"*@ name="Model.CandidateObj.FirstName" required placeholder="Enter Frist Name" class="form-control" />
+                            @*@Html.TextBoxFor(x => x.CandidateObj.FirstName, new { required = "required", @placeholder = "Enter Frist Name", @class = "form-control" })*@
+                            <br />
+                            <label>Middle Name</label>
+                            <input type="text" @*value="@Model.CandidateObj.FirstName"*@ name="Model.CandidateObj.MiddleName" required placeholder="Enter Middle Name" class="form-control" />
+                            @*@Html.TextBoxFor(x => x.CandidateObj.MiddleName, new { required = "required", @placeholder = "Enter Middle Name", @class = "form-control" })*@
+                            <br />
+                            <label>Email</label>
+                            <input type="text" @*value="@Model.CandidateObj.FirstName"*@ name="Model.CandidateObj.Email" required placeholder="Enter Email" class="form-control" />
+                            @*@Html.TextBoxFor(x => x.CandidateObj.Email, new { required = "required", @placeholder = "Enter Email", @class = "form-control" })*@
+                            <br />
+                            @*@Html.TextBoxFor(x => x.CandidateObj.MobileNumber, new { required = "required", @placeholder = "Enter Mobile Number", @class = "form-control" })*@
+                            <label>CV File</label>
+                            <input type="file" name="CVFile" id="CVFile" class="form-control btn-info" />
+
+                            @*<div style="border:dashed 1px !important"><img class="img-responsive pt-5 pb-5 pl-5 pr-5" src="~/Content/Images/Logo/@Model.RecruiterObj.RecId/@Model.RecruiterObj.Logo" style="max-height:100px;" /></div>*@
+
+
+                        </div>
+                        <div class="col-md-6">
+                            <label>Last Name</label>
+                            <input type="text" @*value="@Model.CandidateObj.FirstName"*@ name="Model.CandidateObj.LastName" required placeholder="Enter Last Name" class="form-control" />
+                            @*@Html.TextBoxFor(x => x.CandidateObj.LastName, new { required = "required", @placeholder = "Enter Last Name", @class = "form-control" })*@
+                            <br />
+                            <label>Experience</label>
+                            <input type="text" @*value="@Model.CandidateObj.FirstName"*@ name="Model.CandidateObj.Experience" required placeholder="Enter Experience" class="form-control" />
+                            @*@Html.TextBoxFor(x => x.CandidateObj.Experience, new { required = "required", @placeholder = "Enter Experience", @class = "form-control" })*@
+                            <br />
+                            <label>Father Name</label>
+                            <input type="text" @*value="@Model.CandidateObj.FirstName"*@ name="Model.CandidateObj.FatherName" required placeholder="Enter Father Name" class="form-control" />
+                            <br />
+                            <label>Mobile Number</label>
+                            <input type="text" @*value="@Model.CandidateObj.FirstName"*@ name="Model.CandidateObj.MobileNumber" required placeholder="Enter Mobile Number" class="form-control" />
+                            @*<label>Gender</label>
+                                <select id="Gender" name="Gender" class="form-control" required>
+                                    <option value="">Select Gender</option>
+                                    <option value="1" @((Model.CandidateObj.Gender == 1) ? "selected" : "")>Male</option>
+                                    <option value="2" @((Model.CandidateObj.Gender == 2) ? "selected" : "")>Female</option>
+                                </select>*@
+                            @*@Html.TextBoxFor(x => x.CandidateObj.Gender, new { required = "required", @placeholder = "Enter Gender", @class = "form-control" })*@
+                            <br />
+                            @*@Html.TextBoxFor(x => x.CandidateObj.FatherName, new { required = "required", @placeholder = "Enter Father Name", @class = "form-control" })*@
+                            @*<label>Marks Obtained</label>*@
+                            @*@Html.TextBoxFor(x => x.CandidateObj.MarksObtained, new { @placeholder = "See Marks Obtained", @class = "form-control" })*@
+                            @*<label>Qualification Type</label>*@
+                            @*@Html.TextBoxFor(x => x.CandidateObj.QualificationType, new { required = "required", @placeholder = "Enter Degree & Diploma", @class = "form-control" })*@
+                            @*<label>Degree & Diploma File </label>*@
+                            @*<input type="file" name="DegreeFile1" id="DegreeFile1" class="form-control" />*@
+                            @*<div style="border:dashed 1px !important"><img class="img-responsive pt-5 pb-5 pl-5 pr-5" src="~/Content/Images/Logo/@Model.RecruiterObj.RecId/@Model.RecruiterObj.ExternalLogo" style="max-height:100px;" /></div>*@
+                        </div>
+                    </div>
+                    <div class="row">
+                        <br />
+                        <div class="col-md-12">
+                            <h4>Questionair</h4>
+                            @foreach (var item in Model.JobObj.Questionair.Questions)
+                            {
+                                Qcounter++;
+
+                                <h4>
+                                    <strong>Q @Qcounter:@item.Question1</strong>
+                                </h4>
+                                <h4>
+                                    <strong>Answers</strong>
+                                </h4>
+                                foreach (var answers in item.Answers)
+                                {
+
+                                    <input type="checkbox" style="width:20px" class="form-control" value="@answers.AnswerId" name="Model.AnswerList[@AnswerCounter].AnswerId" />
+                                    <label>@answers.Answer1</label>
+                                }
+                                AnswerCounter++;
+                            }
+                        </div>
+                    </div>
+                </div>
+                <button style="float:right !important" type="submit" class="btn btn-success">Apply For Job</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+

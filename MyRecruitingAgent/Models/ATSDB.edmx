@@ -1,0 +1,2336 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="ATSModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Accounts">
+          <Key>
+            <PropertyRef Name="AccountId" />
+          </Key>
+          <Property Name="AccountId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="APIKey" Type="nvarchar" MaxLength="300" />
+          <Property Name="APISecret" Type="nvarchar" MaxLength="300" />
+          <Property Name="Token" Type="nvarchar(max)" />
+          <Property Name="Expiry" Type="datetime" />
+          <Property Name="AccountName" Type="nvarchar" MaxLength="160" />
+          <Property Name="APIValue1" Type="nvarchar" MaxLength="300" />
+          <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="RecId" Type="int" Nullable="false" />
+          <Property Name="CreateDate" Type="datetime" />
+          <Property Name="UpdateDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Admin">
+          <Key>
+            <PropertyRef Name="AdminId" />
+          </Key>
+          <Property Name="AdminId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Username" Type="nvarchar" MaxLength="160" />
+          <Property Name="Password" Type="nvarchar" MaxLength="160" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="IsSuperAdmin" Type="bit" />
+          <Property Name="Image" Type="nvarchar" MaxLength="160" />
+          <Property Name="Description" Type="nvarchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="AdminKeys">
+          <Key>
+            <PropertyRef Name="AdminKeyId" />
+          </Key>
+          <Property Name="AdminKeyId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AdminAPIKey" Type="nvarchar" MaxLength="200" />
+          <Property Name="AdminAPIKeySecret" Type="nvarchar" MaxLength="200" />
+          <Property Name="AdminAPiValue" Type="nvarchar" MaxLength="200" />
+          <Property Name="AdminAPIToken" Type="nvarchar" MaxLength="500" />
+          <Property Name="Expiry" Type="datetime" />
+          <Property Name="Description" Type="nvarchar" MaxLength="500" />
+          <Property Name="Name" Type="nvarchar" MaxLength="200" />
+          <Property Name="AdminId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Answers">
+          <Key>
+            <PropertyRef Name="AnswerId" />
+          </Key>
+          <Property Name="AnswerId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Answer" Type="nvarchar" MaxLength="300" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="QuestionId" Type="int" Nullable="false" />
+          <Property Name="IsRight" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Applicant">
+          <Key>
+            <PropertyRef Name="ApplicantId" />
+          </Key>
+          <Property Name="ApplicantId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="JobId" Type="int" Nullable="false" />
+          <Property Name="CanId" Type="int" Nullable="false" />
+          <Property Name="ApplicantFullName" Type="nvarchar" MaxLength="160" />
+          <Property Name="Email" Type="nvarchar" MaxLength="160" />
+          <Property Name="Status" Type="int" />
+          <Property Name="EmailSent" Type="bit" />
+          <Property Name="ConfirmationDone" Type="bit" />
+          <Property Name="IsHired" Type="bit" />
+          <Property Name="IsInterviewed" Type="bit" />
+          <Property Name="IsShortlisted" Type="bit" />
+          <Property Name="CreateDate" Type="datetime" />
+          <Property Name="UpdateDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Candidate">
+          <Key>
+            <PropertyRef Name="CanId" />
+          </Key>
+          <Property Name="CanId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="160" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="160" />
+          <Property Name="MiddleName" Type="nvarchar" MaxLength="160" />
+          <Property Name="Email" Type="nvarchar" MaxLength="160" />
+          <Property Name="MobileNumber" Type="nvarchar" MaxLength="160" />
+          <Property Name="SecondaryPhone" Type="nvarchar" MaxLength="160" />
+          <Property Name="NextofKinName" Type="nvarchar" MaxLength="160" />
+          <Property Name="NextofKinPhone" Type="nvarchar" MaxLength="160" />
+          <Property Name="InCaseOfEmergency" Type="nvarchar" MaxLength="160" />
+          <Property Name="Experience" Type="int" />
+          <Property Name="Qualification" Type="nvarchar" MaxLength="160" />
+          <Property Name="QualificationType" Type="nvarchar" MaxLength="160" />
+          <Property Name="Interests" Type="nvarchar" MaxLength="160" />
+          <Property Name="Description" Type="nvarchar" MaxLength="300" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="CreateDate" Type="datetime" />
+          <Property Name="UpdateDate" Type="datetime" />
+          <Property Name="CVFile" Type="nvarchar" MaxLength="160" />
+          <Property Name="CVDescription" Type="nvarchar(max)" />
+          <Property Name="NICFile" Type="nvarchar" MaxLength="160" />
+          <Property Name="DegreeFile1" Type="nvarchar" MaxLength="160" />
+          <Property Name="DegreeFile2" Type="nvarchar" MaxLength="160" />
+          <Property Name="DegreeFile3" Type="nvarchar" MaxLength="160" />
+          <Property Name="DegreeFile4" Type="nvarchar" MaxLength="160" />
+          <Property Name="PassportFile" Type="nvarchar" MaxLength="160" />
+          <Property Name="FatherName" Type="nvarchar" MaxLength="160" />
+          <Property Name="Religion" Type="nvarchar" MaxLength="160" />
+          <Property Name="Gender" Type="int" />
+          <Property Name="RecruitmentStatus" Type="int" />
+          <Property Name="ResumeSourceId" Type="int" Nullable="false" />
+          <Property Name="ApplicationType" Type="int" />
+          <Property Name="IsQualified" Type="bit" />
+          <Property Name="RecId" Type="int" Nullable="false" />
+          <Property Name="MarksObtained" Type="float" />
+        </EntityType>
+        <EntityType Name="CandidateQualification">
+          <Key>
+            <PropertyRef Name="CanQualificationId" />
+          </Key>
+          <Property Name="CanQualificationId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="QualificationId" Type="int" Nullable="false" />
+          <Property Name="CanId" Type="int" Nullable="false" />
+          <Property Name="IsActive" Type="bit" />
+        </EntityType>
+        <EntityType Name="CandidateSkills">
+          <Key>
+            <PropertyRef Name="CandidateSkillId" />
+          </Key>
+          <Property Name="CandidateSkillId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SkillId" Type="int" Nullable="false" />
+          <Property Name="CanId" Type="int" Nullable="false" />
+          <Property Name="IsActive" Type="bit" />
+        </EntityType>
+        <EntityType Name="CareerPages">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Heading" Type="nvarchar" MaxLength="300" />
+          <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="RecId" Type="int" Nullable="false" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="UpdateDate" Type="datetime" />
+          <Property Name="Intro" Type="nvarchar" MaxLength="500" />
+          <Property Name="ExternalLogo" Type="nvarchar" MaxLength="150" />
+        </EntityType>
+        <EntityType Name="DripEmails">
+          <Key>
+            <PropertyRef Name="DripId" />
+          </Key>
+          <Property Name="DripId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="JobId" Type="int" />
+          <Property Name="TemplateId" Type="int" />
+          <Property Name="ApplicantId" Type="int" />
+          <Property Name="CandidateId" Type="int" />
+          <Property Name="IsScheduled" Type="bit" />
+          <Property Name="ScheduledDateTime" Type="datetime" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="IsSentSuccess" Type="bit" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="EmailBodyText" Type="nvarchar(max)" />
+          <Property Name="Subject" Type="nvarchar" MaxLength="300" />
+          <Property Name="CC" Type="nvarchar" MaxLength="160" />
+          <Property Name="BCC" Type="nvarchar" MaxLength="160" />
+          <Property Name="Attachement1" Type="nvarchar" MaxLength="160" />
+          <Property Name="Attachement2" Type="nvarchar" MaxLength="160" />
+          <Property Name="Attachement3" Type="nvarchar" MaxLength="160" />
+          <Property Name="Attachement4" Type="nvarchar" MaxLength="160" />
+          <Property Name="Link" Type="nvarchar" MaxLength="500" />
+          <Property Name="IsBodyHtml" Type="bit" />
+          <Property Name="RecId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="EmailTemplates">
+          <Key>
+            <PropertyRef Name="TemplateId" />
+          </Key>
+          <Property Name="TemplateId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TemplateName" Type="nvarchar" MaxLength="160" />
+          <Property Name="TemplateHtml" Type="nvarchar(max)" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="UpdateDate" Type="datetime" />
+          <Property Name="RecId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Jobs">
+          <Key>
+            <PropertyRef Name="JobId" />
+          </Key>
+          <Property Name="JobId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="JobName" Type="nvarchar" MaxLength="160" />
+          <Property Name="JobDescription" Type="nvarchar(max)" />
+          <Property Name="JobLocation" Type="nvarchar" MaxLength="160" />
+          <Property Name="JobCity" Type="nvarchar" MaxLength="160" />
+          <Property Name="JobState" Type="nvarchar" MaxLength="160" />
+          <Property Name="JobCountry" Type="nvarchar" MaxLength="160" />
+          <Property Name="JobIntro" Type="nvarchar" MaxLength="300" />
+          <Property Name="Experience" Type="int" />
+          <Property Name="Qualification" Type="nvarchar" MaxLength="160" />
+          <Property Name="QualificationType" Type="int" />
+          <Property Name="JobType" Type="nvarchar" MaxLength="160" />
+          <Property Name="JobSalary" Type="float" />
+          <Property Name="Currency" Type="nvarchar" MaxLength="160" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="IsPosted" Type="bit" />
+          <Property Name="IsReposted" Type="bit" />
+          <Property Name="CreateDate" Type="datetime" />
+          <Property Name="UpdateDate" Type="datetime" />
+          <Property Name="UpdateBy" Type="int" />
+          <Property Name="IsClosed" Type="bit" />
+          <Property Name="IsDeleted" Type="bit" />
+          <Property Name="RecId" Type="int" Nullable="false" />
+          <Property Name="QuestionairId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Plan">
+          <Key>
+            <PropertyRef Name="PlanId" />
+          </Key>
+          <Property Name="PlanId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PlanName" Type="nvarchar" MaxLength="160" />
+          <Property Name="Amount" Type="float" />
+          <Property Name="Currency" Type="int" />
+          <Property Name="IsActive" Type="bit" />
+        </EntityType>
+        <EntityType Name="Platforms">
+          <Key>
+            <PropertyRef Name="PlatformId" />
+          </Key>
+          <Property Name="PlatformId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PlatformName" Type="nvarchar" MaxLength="160" />
+          <Property Name="IsPaid" Type="bit" />
+          <Property Name="Desccription" Type="nvarchar" MaxLength="300" />
+          <Property Name="PlatformKey" Type="nvarchar" MaxLength="200" />
+          <Property Name="PlatfromValue" Type="nvarchar" MaxLength="200" />
+          <Property Name="IsActive" Type="bit" />
+        </EntityType>
+        <EntityType Name="PostedJobs">
+          <Key>
+            <PropertyRef Name="PostedJobId" />
+          </Key>
+          <Property Name="PostedJobId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="JobId" Type="int" Nullable="false" />
+          <Property Name="PlatformId" Type="int" Nullable="false" />
+          <Property Name="IsPaid" Type="bit" />
+          <Property Name="Amount" Type="float" />
+          <Property Name="PaymentId" Type="int" />
+          <Property Name="PaymentIdString" Type="nvarchar" MaxLength="160" />
+          <Property Name="PaymentType" Type="int" />
+        </EntityType>
+        <EntityType Name="Qualification">
+          <Key>
+            <PropertyRef Name="QualificationId" />
+          </Key>
+          <Property Name="QualificationId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="QualificationName" Type="nvarchar" MaxLength="160" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="RecId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Questionair">
+          <Key>
+            <PropertyRef Name="QuestionairId" />
+          </Key>
+          <Property Name="QuestionairId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="160" />
+          <Property Name="RecId" Type="int" Nullable="false" />
+          <Property Name="IsActive" Type="bit" />
+        </EntityType>
+        <EntityType Name="Questions">
+          <Key>
+            <PropertyRef Name="QuestionId" />
+          </Key>
+          <Property Name="QuestionId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Question" Type="nvarchar" MaxLength="300" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="QuestionairId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Recruiter">
+          <Key>
+            <PropertyRef Name="RecId" />
+          </Key>
+          <Property Name="RecId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Username" Type="nvarchar" MaxLength="160" Nullable="false" />
+          <Property Name="Password" Type="nvarchar" MaxLength="160" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="UserPlanId" Type="int" Nullable="false" />
+          <Property Name="Logo" Type="nvarchar" MaxLength="160" />
+          <Property Name="CompanyName" Type="nvarchar" MaxLength="160" />
+          <Property Name="CompanyAddress" Type="nvarchar" MaxLength="300" />
+          <Property Name="City" Type="nvarchar" MaxLength="160" />
+          <Property Name="State" Type="nvarchar" MaxLength="160" />
+          <Property Name="ExternalLogo" Type="nvarchar" MaxLength="160" />
+          <Property Name="CreateDate" Type="datetime" />
+          <Property Name="UpdateDate" Type="datetime" />
+          <Property Name="PaymentType" Type="int" Nullable="false" />
+          <Property Name="AdminId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="RecSMTP">
+          <Key>
+            <PropertyRef Name="RecSMTPId" />
+          </Key>
+          <Property Name="RecSMTPId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RecId" Type="int" Nullable="false" />
+          <Property Name="SMTP" Type="nvarchar" MaxLength="160" />
+          <Property Name="Email" Type="nvarchar" MaxLength="160" />
+          <Property Name="Password" Type="nvarchar" MaxLength="160" />
+          <Property Name="Network" Type="nvarchar" MaxLength="160" />
+          <Property Name="IsSSL" Type="bit" />
+          <Property Name="Port" Type="nvarchar" MaxLength="160" />
+          <Property Name="IP" Type="nvarchar" MaxLength="160" />
+          <Property Name="HostName" Type="nvarchar" MaxLength="160" />
+          <Property Name="ClientName" Type="nvarchar" MaxLength="160" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="SMTPKey" Type="nvarchar" MaxLength="160" />
+          <Property Name="SMTPValue" Type="nvarchar" MaxLength="160" />
+          <Property Name="Description" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="ResumeSource">
+          <Key>
+            <PropertyRef Name="ResumeSourceId" />
+          </Key>
+          <Property Name="ResumeSourceId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SourceName" Type="nvarchar" MaxLength="160" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="RecId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Skills">
+          <Key>
+            <PropertyRef Name="SkillId" />
+          </Key>
+          <Property Name="SkillId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SkillName" Type="nvarchar" MaxLength="160" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="RecId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="Ticket">
+          <Key>
+            <PropertyRef Name="TicketId" />
+          </Key>
+          <Property Name="TicketId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Subject" Type="nvarchar" MaxLength="200" />
+          <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="CreateDate" Type="datetime" />
+          <Property Name="UpdateDate" Type="datetime" />
+          <Property Name="RecId" Type="int" Nullable="false" />
+          <Property Name="FileName" Type="nvarchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="TicketResponse">
+          <Key>
+            <PropertyRef Name="ResponseId" />
+          </Key>
+          <Property Name="ResponseId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Answer" Type="nvarchar(max)" />
+          <Property Name="FileName" Type="nvarchar" MaxLength="200" />
+          <Property Name="TicketId" Type="int" Nullable="false" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="CreateDate" Type="datetime" />
+          <Property Name="UpdateDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="UserPlan">
+          <Key>
+            <PropertyRef Name="UserPlanId" />
+          </Key>
+          <Property Name="UserPlanId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PlanId" Type="int" Nullable="false" />
+          <Property Name="RecId" Type="int" Nullable="false" />
+          <Property Name="IsSubscribed" Type="bit" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="IsPlanPurchased" Type="bit" Nullable="false" />
+          <Property Name="Expiry" Type="datetime" />
+        </EntityType>
+        <Association Name="FK_Accounts_Recruiter">
+          <End Role="Recruiter" Type="Self.Recruiter" Multiplicity="1" />
+          <End Role="Accounts" Type="Self.Accounts" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Recruiter">
+              <PropertyRef Name="RecId" />
+            </Principal>
+            <Dependent Role="Accounts">
+              <PropertyRef Name="RecId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AdminKeys_Admin">
+          <End Role="Admin" Type="Self.Admin" Multiplicity="1" />
+          <End Role="AdminKeys" Type="Self.AdminKeys" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Admin">
+              <PropertyRef Name="AdminId" />
+            </Principal>
+            <Dependent Role="AdminKeys">
+              <PropertyRef Name="AdminId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Answers_Questions">
+          <End Role="Questions" Type="Self.Questions" Multiplicity="1" />
+          <End Role="Answers" Type="Self.Answers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Questions">
+              <PropertyRef Name="QuestionId" />
+            </Principal>
+            <Dependent Role="Answers">
+              <PropertyRef Name="QuestionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Applicant_Candidate">
+          <End Role="Candidate" Type="Self.Candidate" Multiplicity="1" />
+          <End Role="Applicant" Type="Self.Applicant" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Candidate">
+              <PropertyRef Name="CanId" />
+            </Principal>
+            <Dependent Role="Applicant">
+              <PropertyRef Name="CanId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Applicant_Jobs">
+          <End Role="Jobs" Type="Self.Jobs" Multiplicity="1" />
+          <End Role="Applicant" Type="Self.Applicant" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Jobs">
+              <PropertyRef Name="JobId" />
+            </Principal>
+            <Dependent Role="Applicant">
+              <PropertyRef Name="JobId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Candidate_Recruiter">
+          <End Role="Recruiter" Type="Self.Recruiter" Multiplicity="1" />
+          <End Role="Candidate" Type="Self.Candidate" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Recruiter">
+              <PropertyRef Name="RecId" />
+            </Principal>
+            <Dependent Role="Candidate">
+              <PropertyRef Name="RecId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Candidate_ResumeSource">
+          <End Role="ResumeSource" Type="Self.ResumeSource" Multiplicity="1" />
+          <End Role="Candidate" Type="Self.Candidate" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ResumeSource">
+              <PropertyRef Name="ResumeSourceId" />
+            </Principal>
+            <Dependent Role="Candidate">
+              <PropertyRef Name="ResumeSourceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CandidateQualification_Candidate">
+          <End Role="Candidate" Type="Self.Candidate" Multiplicity="1" />
+          <End Role="CandidateQualification" Type="Self.CandidateQualification" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Candidate">
+              <PropertyRef Name="CanId" />
+            </Principal>
+            <Dependent Role="CandidateQualification">
+              <PropertyRef Name="CanId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CandidateQualification_Qualification">
+          <End Role="Qualification" Type="Self.Qualification" Multiplicity="1" />
+          <End Role="CandidateQualification" Type="Self.CandidateQualification" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Qualification">
+              <PropertyRef Name="QualificationId" />
+            </Principal>
+            <Dependent Role="CandidateQualification">
+              <PropertyRef Name="QualificationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CandidateSkills_Candidate">
+          <End Role="Candidate" Type="Self.Candidate" Multiplicity="1" />
+          <End Role="CandidateSkills" Type="Self.CandidateSkills" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Candidate">
+              <PropertyRef Name="CanId" />
+            </Principal>
+            <Dependent Role="CandidateSkills">
+              <PropertyRef Name="CanId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CandidateSkills_Skills">
+          <End Role="Skills" Type="Self.Skills" Multiplicity="1" />
+          <End Role="CandidateSkills" Type="Self.CandidateSkills" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Skills">
+              <PropertyRef Name="SkillId" />
+            </Principal>
+            <Dependent Role="CandidateSkills">
+              <PropertyRef Name="SkillId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CareerPages_Recruiter">
+          <End Role="Recruiter" Type="Self.Recruiter" Multiplicity="1" />
+          <End Role="CareerPages" Type="Self.CareerPages" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Recruiter">
+              <PropertyRef Name="RecId" />
+            </Principal>
+            <Dependent Role="CareerPages">
+              <PropertyRef Name="RecId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DripEmails_Recruiter">
+          <End Role="Recruiter" Type="Self.Recruiter" Multiplicity="1" />
+          <End Role="DripEmails" Type="Self.DripEmails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Recruiter">
+              <PropertyRef Name="RecId" />
+            </Principal>
+            <Dependent Role="DripEmails">
+              <PropertyRef Name="RecId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EmailTemplates_Recruiter">
+          <End Role="Recruiter" Type="Self.Recruiter" Multiplicity="1" />
+          <End Role="EmailTemplates" Type="Self.EmailTemplates" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Recruiter">
+              <PropertyRef Name="RecId" />
+            </Principal>
+            <Dependent Role="EmailTemplates">
+              <PropertyRef Name="RecId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Jobs_Questionair">
+          <End Role="Questionair" Type="Self.Questionair" Multiplicity="1" />
+          <End Role="Jobs" Type="Self.Jobs" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Questionair">
+              <PropertyRef Name="QuestionairId" />
+            </Principal>
+            <Dependent Role="Jobs">
+              <PropertyRef Name="QuestionairId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Jobs_Recruiter">
+          <End Role="Recruiter" Type="Self.Recruiter" Multiplicity="1" />
+          <End Role="Jobs" Type="Self.Jobs" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Recruiter">
+              <PropertyRef Name="RecId" />
+            </Principal>
+            <Dependent Role="Jobs">
+              <PropertyRef Name="RecId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PostedJobs_Jobs">
+          <End Role="Jobs" Type="Self.Jobs" Multiplicity="1" />
+          <End Role="PostedJobs" Type="Self.PostedJobs" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Jobs">
+              <PropertyRef Name="JobId" />
+            </Principal>
+            <Dependent Role="PostedJobs">
+              <PropertyRef Name="JobId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PostedJobs_Platforms">
+          <End Role="Platforms" Type="Self.Platforms" Multiplicity="1" />
+          <End Role="PostedJobs" Type="Self.PostedJobs" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Platforms">
+              <PropertyRef Name="PlatformId" />
+            </Principal>
+            <Dependent Role="PostedJobs">
+              <PropertyRef Name="PlatformId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Qualification_Recruiter">
+          <End Role="Recruiter" Type="Self.Recruiter" Multiplicity="1" />
+          <End Role="Qualification" Type="Self.Qualification" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Recruiter">
+              <PropertyRef Name="RecId" />
+            </Principal>
+            <Dependent Role="Qualification">
+              <PropertyRef Name="RecId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Questionair_Recruiter">
+          <End Role="Recruiter" Type="Self.Recruiter" Multiplicity="1" />
+          <End Role="Questionair" Type="Self.Questionair" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Recruiter">
+              <PropertyRef Name="RecId" />
+            </Principal>
+            <Dependent Role="Questionair">
+              <PropertyRef Name="RecId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Questions_Questionair">
+          <End Role="Questionair" Type="Self.Questionair" Multiplicity="1" />
+          <End Role="Questions" Type="Self.Questions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Questionair">
+              <PropertyRef Name="QuestionairId" />
+            </Principal>
+            <Dependent Role="Questions">
+              <PropertyRef Name="QuestionairId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Recruiter_Admin">
+          <End Role="Admin" Type="Self.Admin" Multiplicity="1" />
+          <End Role="Recruiter" Type="Self.Recruiter" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Admin">
+              <PropertyRef Name="AdminId" />
+            </Principal>
+            <Dependent Role="Recruiter">
+              <PropertyRef Name="AdminId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RecSMTP_Recruiter">
+          <End Role="Recruiter" Type="Self.Recruiter" Multiplicity="1" />
+          <End Role="RecSMTP" Type="Self.RecSMTP" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Recruiter">
+              <PropertyRef Name="RecId" />
+            </Principal>
+            <Dependent Role="RecSMTP">
+              <PropertyRef Name="RecId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ResumeSource_Recruiter">
+          <End Role="Recruiter" Type="Self.Recruiter" Multiplicity="1" />
+          <End Role="ResumeSource" Type="Self.ResumeSource" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Recruiter">
+              <PropertyRef Name="RecId" />
+            </Principal>
+            <Dependent Role="ResumeSource">
+              <PropertyRef Name="RecId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Skills_Recruiter">
+          <End Role="Recruiter" Type="Self.Recruiter" Multiplicity="1" />
+          <End Role="Skills" Type="Self.Skills" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Recruiter">
+              <PropertyRef Name="RecId" />
+            </Principal>
+            <Dependent Role="Skills">
+              <PropertyRef Name="RecId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Ticket_Recruiter">
+          <End Role="Recruiter" Type="Self.Recruiter" Multiplicity="1" />
+          <End Role="Ticket" Type="Self.Ticket" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Recruiter">
+              <PropertyRef Name="RecId" />
+            </Principal>
+            <Dependent Role="Ticket">
+              <PropertyRef Name="RecId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TicketResponse_Ticket">
+          <End Role="Ticket" Type="Self.Ticket" Multiplicity="1" />
+          <End Role="TicketResponse" Type="Self.TicketResponse" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ticket">
+              <PropertyRef Name="TicketId" />
+            </Principal>
+            <Dependent Role="TicketResponse">
+              <PropertyRef Name="TicketId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserPlan_Plan">
+          <End Role="Plan" Type="Self.Plan" Multiplicity="1" />
+          <End Role="UserPlan" Type="Self.UserPlan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Plan">
+              <PropertyRef Name="PlanId" />
+            </Principal>
+            <Dependent Role="UserPlan">
+              <PropertyRef Name="PlanId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserPlan_Recruiter">
+          <End Role="Recruiter" Type="Self.Recruiter" Multiplicity="1" />
+          <End Role="UserPlan" Type="Self.UserPlan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Recruiter">
+              <PropertyRef Name="RecId" />
+            </Principal>
+            <Dependent Role="UserPlan">
+              <PropertyRef Name="RecId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+        <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <EntityContainer Name="ATSModelStoreContainer">
+          <EntitySet Name="Accounts" EntityType="Self.Accounts" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Admin" EntityType="Self.Admin" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AdminKeys" EntityType="Self.AdminKeys" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Answers" EntityType="Self.Answers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Applicant" EntityType="Self.Applicant" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Candidate" EntityType="Self.Candidate" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CandidateQualification" EntityType="Self.CandidateQualification" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CandidateSkills" EntityType="Self.CandidateSkills" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CareerPages" EntityType="Self.CareerPages" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DripEmails" EntityType="Self.DripEmails" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EmailTemplates" EntityType="Self.EmailTemplates" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Jobs" EntityType="Self.Jobs" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Plan" EntityType="Self.Plan" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Platforms" EntityType="Self.Platforms" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PostedJobs" EntityType="Self.PostedJobs" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Qualification" EntityType="Self.Qualification" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Questionair" EntityType="Self.Questionair" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Questions" EntityType="Self.Questions" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Recruiter" EntityType="Self.Recruiter" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RecSMTP" EntityType="Self.RecSMTP" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ResumeSource" EntityType="Self.ResumeSource" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Skills" EntityType="Self.Skills" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Ticket" EntityType="Self.Ticket" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TicketResponse" EntityType="Self.TicketResponse" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserPlan" EntityType="Self.UserPlan" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Accounts_Recruiter" Association="Self.FK_Accounts_Recruiter">
+            <End Role="Recruiter" EntitySet="Recruiter" />
+            <End Role="Accounts" EntitySet="Accounts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AdminKeys_Admin" Association="Self.FK_AdminKeys_Admin">
+            <End Role="Admin" EntitySet="Admin" />
+            <End Role="AdminKeys" EntitySet="AdminKeys" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Answers_Questions" Association="Self.FK_Answers_Questions">
+            <End Role="Questions" EntitySet="Questions" />
+            <End Role="Answers" EntitySet="Answers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Applicant_Candidate" Association="Self.FK_Applicant_Candidate">
+            <End Role="Candidate" EntitySet="Candidate" />
+            <End Role="Applicant" EntitySet="Applicant" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Applicant_Jobs" Association="Self.FK_Applicant_Jobs">
+            <End Role="Jobs" EntitySet="Jobs" />
+            <End Role="Applicant" EntitySet="Applicant" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Candidate_Recruiter" Association="Self.FK_Candidate_Recruiter">
+            <End Role="Recruiter" EntitySet="Recruiter" />
+            <End Role="Candidate" EntitySet="Candidate" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Candidate_ResumeSource" Association="Self.FK_Candidate_ResumeSource">
+            <End Role="ResumeSource" EntitySet="ResumeSource" />
+            <End Role="Candidate" EntitySet="Candidate" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CandidateQualification_Candidate" Association="Self.FK_CandidateQualification_Candidate">
+            <End Role="Candidate" EntitySet="Candidate" />
+            <End Role="CandidateQualification" EntitySet="CandidateQualification" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CandidateQualification_Qualification" Association="Self.FK_CandidateQualification_Qualification">
+            <End Role="Qualification" EntitySet="Qualification" />
+            <End Role="CandidateQualification" EntitySet="CandidateQualification" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CandidateSkills_Candidate" Association="Self.FK_CandidateSkills_Candidate">
+            <End Role="Candidate" EntitySet="Candidate" />
+            <End Role="CandidateSkills" EntitySet="CandidateSkills" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CandidateSkills_Skills" Association="Self.FK_CandidateSkills_Skills">
+            <End Role="Skills" EntitySet="Skills" />
+            <End Role="CandidateSkills" EntitySet="CandidateSkills" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CareerPages_Recruiter" Association="Self.FK_CareerPages_Recruiter">
+            <End Role="Recruiter" EntitySet="Recruiter" />
+            <End Role="CareerPages" EntitySet="CareerPages" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DripEmails_Recruiter" Association="Self.FK_DripEmails_Recruiter">
+            <End Role="Recruiter" EntitySet="Recruiter" />
+            <End Role="DripEmails" EntitySet="DripEmails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EmailTemplates_Recruiter" Association="Self.FK_EmailTemplates_Recruiter">
+            <End Role="Recruiter" EntitySet="Recruiter" />
+            <End Role="EmailTemplates" EntitySet="EmailTemplates" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Jobs_Questionair" Association="Self.FK_Jobs_Questionair">
+            <End Role="Questionair" EntitySet="Questionair" />
+            <End Role="Jobs" EntitySet="Jobs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Jobs_Recruiter" Association="Self.FK_Jobs_Recruiter">
+            <End Role="Recruiter" EntitySet="Recruiter" />
+            <End Role="Jobs" EntitySet="Jobs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PostedJobs_Jobs" Association="Self.FK_PostedJobs_Jobs">
+            <End Role="Jobs" EntitySet="Jobs" />
+            <End Role="PostedJobs" EntitySet="PostedJobs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PostedJobs_Platforms" Association="Self.FK_PostedJobs_Platforms">
+            <End Role="Platforms" EntitySet="Platforms" />
+            <End Role="PostedJobs" EntitySet="PostedJobs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Qualification_Recruiter" Association="Self.FK_Qualification_Recruiter">
+            <End Role="Recruiter" EntitySet="Recruiter" />
+            <End Role="Qualification" EntitySet="Qualification" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Questionair_Recruiter" Association="Self.FK_Questionair_Recruiter">
+            <End Role="Recruiter" EntitySet="Recruiter" />
+            <End Role="Questionair" EntitySet="Questionair" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Questions_Questionair" Association="Self.FK_Questions_Questionair">
+            <End Role="Questionair" EntitySet="Questionair" />
+            <End Role="Questions" EntitySet="Questions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Recruiter_Admin" Association="Self.FK_Recruiter_Admin">
+            <End Role="Admin" EntitySet="Admin" />
+            <End Role="Recruiter" EntitySet="Recruiter" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RecSMTP_Recruiter" Association="Self.FK_RecSMTP_Recruiter">
+            <End Role="Recruiter" EntitySet="Recruiter" />
+            <End Role="RecSMTP" EntitySet="RecSMTP" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ResumeSource_Recruiter" Association="Self.FK_ResumeSource_Recruiter">
+            <End Role="Recruiter" EntitySet="Recruiter" />
+            <End Role="ResumeSource" EntitySet="ResumeSource" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Skills_Recruiter" Association="Self.FK_Skills_Recruiter">
+            <End Role="Recruiter" EntitySet="Recruiter" />
+            <End Role="Skills" EntitySet="Skills" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Ticket_Recruiter" Association="Self.FK_Ticket_Recruiter">
+            <End Role="Recruiter" EntitySet="Recruiter" />
+            <End Role="Ticket" EntitySet="Ticket" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TicketResponse_Ticket" Association="Self.FK_TicketResponse_Ticket">
+            <End Role="Ticket" EntitySet="Ticket" />
+            <End Role="TicketResponse" EntitySet="TicketResponse" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserPlan_Plan" Association="Self.FK_UserPlan_Plan">
+            <End Role="Plan" EntitySet="Plan" />
+            <End Role="UserPlan" EntitySet="UserPlan" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserPlan_Recruiter" Association="Self.FK_UserPlan_Recruiter">
+            <End Role="Recruiter" EntitySet="Recruiter" />
+            <End Role="UserPlan" EntitySet="UserPlan" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ATSModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Account">
+          <Key>
+            <PropertyRef Name="AccountId" />
+          </Key>
+          <Property Name="AccountId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="APIKey" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="APISecret" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="Token" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Expiry" Type="DateTime" Precision="3" />
+          <Property Name="AccountName" Type="String" MaxLength="160" FixedLength="false" Unicode="true" />
+          <Property Name="APIValue1" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="RecId" Type="Int32" Nullable="false" />
+          <Property Name="CreateDate" Type="DateTime" Precision="3" />
+          <Property Name="UpdateDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Recruiter" Relationship="Self.FK_Accounts_Recruiter" FromRole="Accounts" ToRole="Recruiter" />
+        </EntityType>
+        <EntityType Name="Admin">
+          <Key>
+            <PropertyRef Name="AdminId" />
+          </Key>
+          <Property Name="AdminId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Username" Type="String" MaxLength="160" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" MaxLength="160" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="IsSuperAdmin" Type="Boolean" />
+          <Property Name="Image" Type="String" MaxLength="160" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AdminKeys" Relationship="Self.FK_AdminKeys_Admin" FromRole="Admin" ToRole="AdminKeys" />
+          <NavigationProperty Name="Recruiters" Relationship="Self.FK_Recruiter_Admin" FromRole="Admin" ToRole="Recruiter" />
+        </EntityType>
+        <EntityType Name="AdminKey">
+          <Key>
+            <PropertyRef Name="AdminKeyId" />
+          </Key>
+          <Property Name="AdminKeyId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AdminAPIKey" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="AdminAPIKeySecret" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="AdminAPiValue" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="AdminAPIToken" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Expiry" Type="DateTime" Precision="3" />
+          <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Name" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="AdminId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Admin" Relationship="Self.FK_AdminKeys_Admin" FromRole="AdminKeys" ToRole="Admin" />
+        </EntityType>
+        <EntityType Name="Answer">
+          <Key>
+            <PropertyRef Name="AnswerId" />
+          </Key>
+          <Property Name="AnswerId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Answer1" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="QuestionId" Type="Int32" Nullable="false" />
+          <Property Name="IsRight" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Question" Relationship="ATSModel.FK_Answers_Questions" FromRole="Answer" ToRole="Question" />
+        </EntityType>
+        <EntityType Name="Applicant">
+          <Key>
+            <PropertyRef Name="ApplicantId" />
+          </Key>
+          <Property Name="ApplicantId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="JobId" Type="Int32" Nullable="false" />
+          <Property Name="CanId" Type="Int32" Nullable="false" />
+          <Property Name="ApplicantFullName" Type="String" MaxLength="160" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="160" FixedLength="false" Unicode="true" />
+          <Property Name="Status" Type="Int32" />
+          <Property Name="EmailSent" Type="Boolean" />
+          <Property Name="ConfirmationDone" Type="Boolean" />
+          <Property Name="IsHired" Type="Boolean" />
+          <Property Name="IsInterviewed" Type="Boolean" />
+          <Property Name="IsShortlisted" Type="Boolean" />
+          <Property Name="CreateDate" Type="DateTime" Precision="3" />
+          <Property Name="UpdateDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Candidate" Relationship="Self.FK_Applicant_Candidate" FromRole="Applicant" ToRole="Candidate" />
+          <NavigationProperty Name="Job" Relationship="Self.FK_Applicant_Jobs" FromRole="Applicant" ToRole="Jobs" />
+        </EntityType>
+        <EntityType Name="Candidate">
+          <Key>
+            <PropertyRef Name="CanId" />
+          </Key>
+          <Property Name="CanId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="String" MaxLength="160" FixedLength="false" Unicode="true" />
+          <Property Name="LastName" Type="String" MaxLength="160" FixedLength="false" Unicode="true" />
+          <Property Name="MiddleName" Type="String" MaxLength="160" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="160" FixedLength="false" Unicode="true" />
+          <Property Name="MobileNumber" Type="String" MaxLength="160" FixedLength="false" Unicode="true" />
+          <Property Name="SecondaryPhone" Type="String" MaxLength="160" FixedLength="false" Unicode="true" />
+          <Property Name="NextofKinName" Type="String" MaxLength="160" FixedLength="false" Unicode="true" />
+          <Property Name="NextofKinPhone" Type="String" MaxLength="160" FixedLength="false" Unicode="true" />
+          <Property Name="InCaseOfEmergency" Type="String" MaxLength="160" FixedLength="false" Unicode="true" />
+          <Property Name="Experience" Type="Int32" />
+          <Property Name="Qualification" Type="String" MaxLength="160" FixedLength="false" Unicode="true" />
+          <Property Name="QualificationType" Type="String" MaxLength="160" FixedLength="false" Unicode="true" />
+          <Property Name="Interests" Type="String" MaxLength="160" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="CreateDate" Type="DateTime" Precision="3" />
+          <Property Name="UpdateDate" Type="DateTime" Precision="3" />
+          <Property Name="CVFile" Type="String" MaxLength="160" FixedLength="false" Unicode="true" />
+          <Property Name="CVDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="NICFile" Type="String" MaxLength="160" FixedLength="false" Unicode="true" />
+          <Property Name="DegreeFile1" Type="String" MaxLength="160" FixedLength="false" Unicode="true" />
+          <Property Name="DegreeFile2" Type="String" MaxLength="160" FixedLength="false" Unicode="true" />
+          <Property Name="DegreeFile3" Type="String" MaxLength="160" FixedLength="false" Unicode="true" />
+          <Property Name="DegreeFile4" Type="String" MaxLength="160" FixedLength="false" Unicode="true" />
+          <Property Name="PassportFile" Type="String" MaxLength="160" FixedLength="false" Unicode="true" />
+          <Property Name="FatherName" Type="String" MaxLength="160" FixedLength="false" Unicode="true" />
+          <Property Name="Religion" Type="String" MaxLength="160" FixedLength="false" Unicode="true" />
+          <Property Name="Gender" Type="Int32" />
+          <Property Name="RecruitmentStatus" Type="Int32" />
+          <Property Name="ResumeSourceId" Type="Int32" Nullable="false" />
+          <Property Name="ApplicationType" Type="Int32" />
+          <Property Name="IsQualified" Type="Boolean" />
+          <Property Name="RecId" Type="Int32" Nullable="false" />
+          <Property Name="MarksObtained" Type="Double" />
+          <NavigationProperty Name="Applicants" Relationship="Self.FK_Applicant_Candidate" FromRole="Candidate" ToRole="Applicant" />
+          <NavigationProperty Name="Recruiter" Relationship="Self.FK_Candidate_Recruiter" FromRole="Candidate" ToRole="Recruiter" />
+          <NavigationProperty Name="ResumeSource" Relationship="Self.FK_Candidate_ResumeSource" FromRole="Candidate" ToRole="ResumeSource" />
+          <NavigationProperty Name="CandidateQualifications" Relationship="Self.FK_CandidateQualification_Candidate" FromRole="Candidate" ToRole="CandidateQualification" />
+          <NavigationProperty Name="CandidateSkills" Relationship="Self.FK_CandidateSkills_Candidate" FromRole="Candidate" ToRole="CandidateSkills" />
+        </EntityType>
+        <EntityType Name="CandidateQualification">
+          <Key>
+            <PropertyRef Name="CanQualificationId" />
+          </Key>
+          <Property Name="CanQualificationId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="QualificationId" Type="Int32" Nullable="false" />
+          <Property Name="CanId" Type="Int32" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" />
+          <NavigationProperty Name="Candidate" Relationship="Self.FK_CandidateQualification_Candidate" FromRole="CandidateQualification" ToRole="Candidate" />
+          <NavigationProperty Name="Qualification" Relationship="Self.FK_CandidateQualification_Qualification" FromRole="CandidateQualification" ToRole="Qualification" />
+        </EntityType>
+        <EntityType Name="CandidateSkill">
+          <Key>
+            <PropertyRef Name="CandidateSkillId" />
+          </Key>
+          <Property Name="CandidateSkillId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SkillId" Type="Int32" Nullable="false" />
+          <Property Name="CanId" Type="Int32" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" />
+          <NavigationProperty Name="Candidate" Relationship="Self.FK_CandidateSkills_Candidate" FromRole="CandidateSkills" ToRole="Candidate" />
+          <NavigationProperty Name="Skill" Relationship="Self.FK_CandidateSkills_Skills" FromRole="CandidateSkills" ToRole="Skills" />
+        </EntityType>
+        <EntityType Name="DripEmail">
+          <Key>
+            <PropertyRef Name="DripId" />
+          </Key>
+          <Property Name="DripId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="JobId" Type="Int32" />
+          <Property Name="TemplateId" Type="Int32" />
+          <Property Name="ApplicantId" Type="Int32" />
+          <Property Name="CandidateId" Type="Int32" />
+          <Property Name="IsScheduled" Type="Boolean" />
+          <Property Name="ScheduledDateTime" Type="DateTime" Precision="3" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="IsSentSuccess" Type="Boolean" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="EmailBodyText" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Subject" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="CC" Type="String" MaxLength="160" FixedLength="false" Unicode="true" />
+          <Property Name="BCC" Type="String" MaxLength="160" FixedLength="false" Unicode="true" />
+          <Property Name="Attachement1" Type="String" MaxLength="160" FixedLength="false" Unicode="true" />
+          <Property Name="Attachement2" Type="String" MaxLength="160" FixedLength="false" Unicode="true" />
+          <Property Name="Attachement3" Type="String" MaxLength="160" FixedLength="false" Unicode="true" />
+          <Property Name="Attachement4" Type="String" MaxLength="160" FixedLength="false" Unicode="true" />
+          <Property Name="Link" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="IsBodyHtml" Type="Boolean" />
+          <Property Name="RecId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Recruiter" Relationship="Self.FK_DripEmails_Recruiter" FromRole="DripEmails" ToRole="Recruiter" />
+        </EntityType>
+        <EntityType Name="EmailTemplate">
+          <Key>
+            <PropertyRef Name="TemplateId" />
+          </Key>
+          <Property Name="TemplateId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TemplateName" Type="String" MaxLength="160" FixedLength="false" Unicode="true" />
+          <Property Name="TemplateHtml" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="UpdateDate" Type="DateTime" Precision="3" />
+          <Property Name="RecId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Recruiter" Relationship="Self.FK_EmailTemplates_Recruiter" FromRole="EmailTemplates" ToRole="Recruiter" />
+        </EntityType>
+        <EntityType Name="Job">
+          <Key>
+            <PropertyRef Name="JobId" />
+          </Key>
+          <Property Name="JobId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="JobName" Type="String" MaxLength="160" FixedLength="false" Unicode="true" />
+          <Property Name="JobDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="JobLocation" Type="String" MaxLength="160" FixedLength="false" Unicode="true" />
+          <Property Name="JobCity" Type="String" MaxLength="160" FixedLength="false" Unicode="true" />
+          <Property Name="JobState" Type="String" MaxLength="160" FixedLength="false" Unicode="true" />
+          <Property Name="JobCountry" Type="String" MaxLength="160" FixedLength="false" Unicode="true" />
+          <Property Name="JobIntro" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="Experience" Type="Int32" />
+          <Property Name="Qualification" Type="String" MaxLength="160" FixedLength="false" Unicode="true" />
+          <Property Name="QualificationType" Type="Int32" />
+          <Property Name="JobType" Type="String" MaxLength="160" FixedLength="false" Unicode="true" />
+          <Property Name="JobSalary" Type="Double" />
+          <Property Name="Currency" Type="String" MaxLength="160" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="IsPosted" Type="Boolean" />
+          <Property Name="IsReposted" Type="Boolean" />
+          <Property Name="CreateDate" Type="DateTime" Precision="3" />
+          <Property Name="UpdateDate" Type="DateTime" Precision="3" />
+          <Property Name="UpdateBy" Type="Int32" />
+          <Property Name="IsClosed" Type="Boolean" />
+          <Property Name="IsDeleted" Type="Boolean" />
+          <Property Name="RecId" Type="Int32" Nullable="false" />
+          <Property Name="QuestionairId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Applicants" Relationship="Self.FK_Applicant_Jobs" FromRole="Jobs" ToRole="Applicant" />
+          <NavigationProperty Name="Questionair" Relationship="Self.FK_Jobs_Questionair" FromRole="Jobs" ToRole="Questionair" />
+          <NavigationProperty Name="Recruiter" Relationship="Self.FK_Jobs_Recruiter" FromRole="Jobs" ToRole="Recruiter" />
+          <NavigationProperty Name="PostedJobs" Relationship="Self.FK_PostedJobs_Jobs" FromRole="Jobs" ToRole="PostedJobs" />
+        </EntityType>
+        <EntityType Name="Plan">
+          <Key>
+            <PropertyRef Name="PlanId" />
+          </Key>
+          <Property Name="PlanId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PlanName" Type="String" MaxLength="160" FixedLength="false" Unicode="true" />
+          <Property Name="Amount" Type="Double" />
+          <Property Name="Currency" Type="Int32" />
+          <Property Name="IsActive" Type="Boolean" />
+          <NavigationProperty Name="UserPlans" Relationship="Self.FK_UserPlan_Plan" FromRole="Plan" ToRole="UserPlan" />
+        </EntityType>
+        <EntityType Name="Platform">
+          <Key>
+            <PropertyRef Name="PlatformId" />
+          </Key>
+          <Property Name="PlatformId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PlatformName" Type="String" MaxLength="160" FixedLength="false" Unicode="true" />
+          <Property Name="IsPaid" Type="Boolean" />
+          <Property Name="Desccription" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="PlatformKey" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="PlatfromValue" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" />
+          <NavigationProperty Name="PostedJobs" Relationship="Self.FK_PostedJobs_Platforms" FromRole="Platforms" ToRole="PostedJobs" />
+        </EntityType>
+        <EntityType Name="PostedJob">
+          <Key>
+            <PropertyRef Name="PostedJobId" />
+          </Key>
+          <Property Name="PostedJobId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="JobId" Type="Int32" Nullable="false" />
+          <Property Name="PlatformId" Type="Int32" Nullable="false" />
+          <Property Name="IsPaid" Type="Boolean" />
+          <Property Name="Amount" Type="Double" />
+          <Property Name="PaymentId" Type="Int32" />
+          <Property Name="PaymentIdString" Type="String" MaxLength="160" FixedLength="false" Unicode="true" />
+          <Property Name="PaymentType" Type="Int32" />
+          <NavigationProperty Name="Job" Relationship="Self.FK_PostedJobs_Jobs" FromRole="PostedJobs" ToRole="Jobs" />
+          <NavigationProperty Name="Platform" Relationship="Self.FK_PostedJobs_Platforms" FromRole="PostedJobs" ToRole="Platforms" />
+        </EntityType>
+        <EntityType Name="Qualification">
+          <Key>
+            <PropertyRef Name="QualificationId" />
+          </Key>
+          <Property Name="QualificationId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="QualificationName" Type="String" MaxLength="160" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="RecId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="CandidateQualifications" Relationship="Self.FK_CandidateQualification_Qualification" FromRole="Qualification" ToRole="CandidateQualification" />
+          <NavigationProperty Name="Recruiter" Relationship="Self.FK_Qualification_Recruiter" FromRole="Qualification" ToRole="Recruiter" />
+        </EntityType>
+        <EntityType Name="Questionair">
+          <Key>
+            <PropertyRef Name="QuestionairId" />
+          </Key>
+          <Property Name="QuestionairId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="160" FixedLength="false" Unicode="true" />
+          <Property Name="RecId" Type="Int32" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" />
+          <NavigationProperty Name="Jobs" Relationship="Self.FK_Jobs_Questionair" FromRole="Questionair" ToRole="Jobs" />
+          <NavigationProperty Name="Recruiter" Relationship="Self.FK_Questionair_Recruiter" FromRole="Questionair" ToRole="Recruiter" />
+          <NavigationProperty Name="Questions" Relationship="ATSModel.FK_Questions_Questionair" FromRole="Questionair" ToRole="Question" />
+        </EntityType>
+        <EntityType Name="Recruiter">
+          <Key>
+            <PropertyRef Name="RecId" />
+          </Key>
+          <Property Name="RecId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Username" Type="String" MaxLength="160" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="160" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="UserPlanId" Type="Int32" Nullable="false" />
+          <Property Name="Logo" Type="String" MaxLength="160" FixedLength="false" Unicode="true" />
+          <Property Name="CompanyName" Type="String" MaxLength="160" FixedLength="false" Unicode="true" />
+          <Property Name="CompanyAddress" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="City" Type="String" MaxLength="160" FixedLength="false" Unicode="true" />
+          <Property Name="State" Type="String" MaxLength="160" FixedLength="false" Unicode="true" />
+          <Property Name="ExternalLogo" Type="String" MaxLength="160" FixedLength="false" Unicode="true" />
+          <Property Name="CreateDate" Type="DateTime" Precision="3" />
+          <Property Name="UpdateDate" Type="DateTime" Precision="3" />
+          <Property Name="PaymentType" Type="Int32" Nullable="false" />
+          <Property Name="AdminId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Accounts" Relationship="Self.FK_Accounts_Recruiter" FromRole="Recruiter" ToRole="Accounts" />
+          <NavigationProperty Name="Admin" Relationship="Self.FK_Recruiter_Admin" FromRole="Recruiter" ToRole="Admin" />
+          <NavigationProperty Name="Candidates" Relationship="Self.FK_Candidate_Recruiter" FromRole="Recruiter" ToRole="Candidate" />
+          <NavigationProperty Name="DripEmails" Relationship="Self.FK_DripEmails_Recruiter" FromRole="Recruiter" ToRole="DripEmails" />
+          <NavigationProperty Name="EmailTemplates" Relationship="Self.FK_EmailTemplates_Recruiter" FromRole="Recruiter" ToRole="EmailTemplates" />
+          <NavigationProperty Name="Jobs" Relationship="Self.FK_Jobs_Recruiter" FromRole="Recruiter" ToRole="Jobs" />
+          <NavigationProperty Name="Qualifications" Relationship="Self.FK_Qualification_Recruiter" FromRole="Recruiter" ToRole="Qualification" />
+          <NavigationProperty Name="Questionairs" Relationship="Self.FK_Questionair_Recruiter" FromRole="Recruiter" ToRole="Questionair" />
+          <NavigationProperty Name="RecSMTPs" Relationship="Self.FK_RecSMTP_Recruiter" FromRole="Recruiter" ToRole="RecSMTP" />
+          <NavigationProperty Name="ResumeSources" Relationship="Self.FK_ResumeSource_Recruiter" FromRole="Recruiter" ToRole="ResumeSource" />
+          <NavigationProperty Name="Skills" Relationship="Self.FK_Skills_Recruiter" FromRole="Recruiter" ToRole="Skills" />
+          <NavigationProperty Name="Tickets" Relationship="Self.FK_Ticket_Recruiter" FromRole="Recruiter" ToRole="Ticket" />
+          <NavigationProperty Name="UserPlans" Relationship="Self.FK_UserPlan_Recruiter" FromRole="Recruiter" ToRole="UserPlan" />
+          <NavigationProperty Name="CareerPages" Relationship="ATSModel.FK_CareerPages_Recruiter" FromRole="Recruiter" ToRole="CareerPage" />
+        </EntityType>
+        <EntityType Name="RecSMTP">
+          <Key>
+            <PropertyRef Name="RecSMTPId" />
+          </Key>
+          <Property Name="RecSMTPId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RecId" Type="Int32" Nullable="false" />
+          <Property Name="SMTP" Type="String" MaxLength="160" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="160" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" MaxLength="160" FixedLength="false" Unicode="true" />
+          <Property Name="Network" Type="String" MaxLength="160" FixedLength="false" Unicode="true" />
+          <Property Name="IsSSL" Type="Boolean" />
+          <Property Name="Port" Type="String" MaxLength="160" FixedLength="false" Unicode="true" />
+          <Property Name="IP" Type="String" MaxLength="160" FixedLength="false" Unicode="true" />
+          <Property Name="HostName" Type="String" MaxLength="160" FixedLength="false" Unicode="true" />
+          <Property Name="ClientName" Type="String" MaxLength="160" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="SMTPKey" Type="String" MaxLength="160" FixedLength="false" Unicode="true" />
+          <Property Name="SMTPValue" Type="String" MaxLength="160" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Recruiter" Relationship="Self.FK_RecSMTP_Recruiter" FromRole="RecSMTP" ToRole="Recruiter" />
+        </EntityType>
+        <EntityType Name="ResumeSource">
+          <Key>
+            <PropertyRef Name="ResumeSourceId" />
+          </Key>
+          <Property Name="ResumeSourceId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SourceName" Type="String" MaxLength="160" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="RecId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Candidates" Relationship="Self.FK_Candidate_ResumeSource" FromRole="ResumeSource" ToRole="Candidate" />
+          <NavigationProperty Name="Recruiter" Relationship="Self.FK_ResumeSource_Recruiter" FromRole="ResumeSource" ToRole="Recruiter" />
+        </EntityType>
+        <EntityType Name="Skill">
+          <Key>
+            <PropertyRef Name="SkillId" />
+          </Key>
+          <Property Name="SkillId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SkillName" Type="String" MaxLength="160" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="RecId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="CandidateSkills" Relationship="Self.FK_CandidateSkills_Skills" FromRole="Skills" ToRole="CandidateSkills" />
+          <NavigationProperty Name="Recruiter" Relationship="Self.FK_Skills_Recruiter" FromRole="Skills" ToRole="Recruiter" />
+        </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Ticket">
+          <Key>
+            <PropertyRef Name="TicketId" />
+          </Key>
+          <Property Name="TicketId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Subject" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="CreateDate" Type="DateTime" Precision="3" />
+          <Property Name="UpdateDate" Type="DateTime" Precision="3" />
+          <Property Name="RecId" Type="Int32" Nullable="false" />
+          <Property Name="FileName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Recruiter" Relationship="Self.FK_Ticket_Recruiter" FromRole="Ticket" ToRole="Recruiter" />
+          <NavigationProperty Name="TicketResponses" Relationship="Self.FK_TicketResponse_Ticket" FromRole="Ticket" ToRole="TicketResponse" />
+        </EntityType>
+        <EntityType Name="TicketResponse">
+          <Key>
+            <PropertyRef Name="ResponseId" />
+          </Key>
+          <Property Name="ResponseId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Answer" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="FileName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="TicketId" Type="Int32" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="CreateDate" Type="DateTime" Precision="3" />
+          <Property Name="UpdateDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Ticket" Relationship="Self.FK_TicketResponse_Ticket" FromRole="TicketResponse" ToRole="Ticket" />
+        </EntityType>
+        <EntityType Name="UserPlan">
+          <Key>
+            <PropertyRef Name="UserPlanId" />
+          </Key>
+          <Property Name="UserPlanId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PlanId" Type="Int32" Nullable="false" />
+          <Property Name="RecId" Type="Int32" Nullable="false" />
+          <Property Name="IsSubscribed" Type="Boolean" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="IsPlanPurchased" Type="Boolean" Nullable="false" />
+          <Property Name="Expiry" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Plan" Relationship="Self.FK_UserPlan_Plan" FromRole="UserPlan" ToRole="Plan" />
+          <NavigationProperty Name="Recruiter" Relationship="Self.FK_UserPlan_Recruiter" FromRole="UserPlan" ToRole="Recruiter" />
+        </EntityType>
+        <Association Name="FK_Accounts_Recruiter">
+          <End Role="Recruiter" Type="Self.Recruiter" Multiplicity="1" />
+          <End Role="Accounts" Type="Self.Account" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Recruiter">
+              <PropertyRef Name="RecId" />
+            </Principal>
+            <Dependent Role="Accounts">
+              <PropertyRef Name="RecId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AdminKeys_Admin">
+          <End Role="Admin" Type="Self.Admin" Multiplicity="1" />
+          <End Role="AdminKeys" Type="Self.AdminKey" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Admin">
+              <PropertyRef Name="AdminId" />
+            </Principal>
+            <Dependent Role="AdminKeys">
+              <PropertyRef Name="AdminId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Recruiter_Admin">
+          <End Role="Admin" Type="Self.Admin" Multiplicity="1" />
+          <End Role="Recruiter" Type="Self.Recruiter" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Admin">
+              <PropertyRef Name="AdminId" />
+            </Principal>
+            <Dependent Role="Recruiter">
+              <PropertyRef Name="AdminId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Applicant_Candidate">
+          <End Role="Candidate" Type="Self.Candidate" Multiplicity="1" />
+          <End Role="Applicant" Type="Self.Applicant" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Candidate">
+              <PropertyRef Name="CanId" />
+            </Principal>
+            <Dependent Role="Applicant">
+              <PropertyRef Name="CanId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Applicant_Jobs">
+          <End Role="Jobs" Type="Self.Job" Multiplicity="1" />
+          <End Role="Applicant" Type="Self.Applicant" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Jobs">
+              <PropertyRef Name="JobId" />
+            </Principal>
+            <Dependent Role="Applicant">
+              <PropertyRef Name="JobId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Candidate_Recruiter">
+          <End Role="Recruiter" Type="Self.Recruiter" Multiplicity="1" />
+          <End Role="Candidate" Type="Self.Candidate" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Recruiter">
+              <PropertyRef Name="RecId" />
+            </Principal>
+            <Dependent Role="Candidate">
+              <PropertyRef Name="RecId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Candidate_ResumeSource">
+          <End Role="ResumeSource" Type="Self.ResumeSource" Multiplicity="1" />
+          <End Role="Candidate" Type="Self.Candidate" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ResumeSource">
+              <PropertyRef Name="ResumeSourceId" />
+            </Principal>
+            <Dependent Role="Candidate">
+              <PropertyRef Name="ResumeSourceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CandidateQualification_Candidate">
+          <End Role="Candidate" Type="Self.Candidate" Multiplicity="1" />
+          <End Role="CandidateQualification" Type="Self.CandidateQualification" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Candidate">
+              <PropertyRef Name="CanId" />
+            </Principal>
+            <Dependent Role="CandidateQualification">
+              <PropertyRef Name="CanId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CandidateSkills_Candidate">
+          <End Role="Candidate" Type="Self.Candidate" Multiplicity="1" />
+          <End Role="CandidateSkills" Type="Self.CandidateSkill" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Candidate">
+              <PropertyRef Name="CanId" />
+            </Principal>
+            <Dependent Role="CandidateSkills">
+              <PropertyRef Name="CanId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CandidateQualification_Qualification">
+          <End Role="Qualification" Type="Self.Qualification" Multiplicity="1" />
+          <End Role="CandidateQualification" Type="Self.CandidateQualification" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Qualification">
+              <PropertyRef Name="QualificationId" />
+            </Principal>
+            <Dependent Role="CandidateQualification">
+              <PropertyRef Name="QualificationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CandidateSkills_Skills">
+          <End Role="Skills" Type="Self.Skill" Multiplicity="1" />
+          <End Role="CandidateSkills" Type="Self.CandidateSkill" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Skills">
+              <PropertyRef Name="SkillId" />
+            </Principal>
+            <Dependent Role="CandidateSkills">
+              <PropertyRef Name="SkillId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DripEmails_Recruiter">
+          <End Role="Recruiter" Type="Self.Recruiter" Multiplicity="1" />
+          <End Role="DripEmails" Type="Self.DripEmail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Recruiter">
+              <PropertyRef Name="RecId" />
+            </Principal>
+            <Dependent Role="DripEmails">
+              <PropertyRef Name="RecId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EmailTemplates_Recruiter">
+          <End Role="Recruiter" Type="Self.Recruiter" Multiplicity="1" />
+          <End Role="EmailTemplates" Type="Self.EmailTemplate" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Recruiter">
+              <PropertyRef Name="RecId" />
+            </Principal>
+            <Dependent Role="EmailTemplates">
+              <PropertyRef Name="RecId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Jobs_Questionair">
+          <End Role="Questionair" Type="Self.Questionair" Multiplicity="1" />
+          <End Role="Jobs" Type="Self.Job" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Questionair">
+              <PropertyRef Name="QuestionairId" />
+            </Principal>
+            <Dependent Role="Jobs">
+              <PropertyRef Name="QuestionairId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Jobs_Recruiter">
+          <End Role="Recruiter" Type="Self.Recruiter" Multiplicity="1" />
+          <End Role="Jobs" Type="Self.Job" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Recruiter">
+              <PropertyRef Name="RecId" />
+            </Principal>
+            <Dependent Role="Jobs">
+              <PropertyRef Name="RecId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PostedJobs_Jobs">
+          <End Role="Jobs" Type="Self.Job" Multiplicity="1" />
+          <End Role="PostedJobs" Type="Self.PostedJob" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Jobs">
+              <PropertyRef Name="JobId" />
+            </Principal>
+            <Dependent Role="PostedJobs">
+              <PropertyRef Name="JobId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserPlan_Plan">
+          <End Role="Plan" Type="Self.Plan" Multiplicity="1" />
+          <End Role="UserPlan" Type="Self.UserPlan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Plan">
+              <PropertyRef Name="PlanId" />
+            </Principal>
+            <Dependent Role="UserPlan">
+              <PropertyRef Name="PlanId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PostedJobs_Platforms">
+          <End Role="Platforms" Type="Self.Platform" Multiplicity="1" />
+          <End Role="PostedJobs" Type="Self.PostedJob" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Platforms">
+              <PropertyRef Name="PlatformId" />
+            </Principal>
+            <Dependent Role="PostedJobs">
+              <PropertyRef Name="PlatformId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Qualification_Recruiter">
+          <End Role="Recruiter" Type="Self.Recruiter" Multiplicity="1" />
+          <End Role="Qualification" Type="Self.Qualification" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Recruiter">
+              <PropertyRef Name="RecId" />
+            </Principal>
+            <Dependent Role="Qualification">
+              <PropertyRef Name="RecId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Questionair_Recruiter">
+          <End Role="Recruiter" Type="Self.Recruiter" Multiplicity="1" />
+          <End Role="Questionair" Type="Self.Questionair" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Recruiter">
+              <PropertyRef Name="RecId" />
+            </Principal>
+            <Dependent Role="Questionair">
+              <PropertyRef Name="RecId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RecSMTP_Recruiter">
+          <End Role="Recruiter" Type="Self.Recruiter" Multiplicity="1" />
+          <End Role="RecSMTP" Type="Self.RecSMTP" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Recruiter">
+              <PropertyRef Name="RecId" />
+            </Principal>
+            <Dependent Role="RecSMTP">
+              <PropertyRef Name="RecId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ResumeSource_Recruiter">
+          <End Role="Recruiter" Type="Self.Recruiter" Multiplicity="1" />
+          <End Role="ResumeSource" Type="Self.ResumeSource" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Recruiter">
+              <PropertyRef Name="RecId" />
+            </Principal>
+            <Dependent Role="ResumeSource">
+              <PropertyRef Name="RecId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Skills_Recruiter">
+          <End Role="Recruiter" Type="Self.Recruiter" Multiplicity="1" />
+          <End Role="Skills" Type="Self.Skill" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Recruiter">
+              <PropertyRef Name="RecId" />
+            </Principal>
+            <Dependent Role="Skills">
+              <PropertyRef Name="RecId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Ticket_Recruiter">
+          <End Role="Recruiter" Type="Self.Recruiter" Multiplicity="1" />
+          <End Role="Ticket" Type="Self.Ticket" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Recruiter">
+              <PropertyRef Name="RecId" />
+            </Principal>
+            <Dependent Role="Ticket">
+              <PropertyRef Name="RecId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserPlan_Recruiter">
+          <End Role="Recruiter" Type="Self.Recruiter" Multiplicity="1" />
+          <End Role="UserPlan" Type="Self.UserPlan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Recruiter">
+              <PropertyRef Name="RecId" />
+            </Principal>
+            <Dependent Role="UserPlan">
+              <PropertyRef Name="RecId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TicketResponse_Ticket">
+          <End Role="Ticket" Type="Self.Ticket" Multiplicity="1" />
+          <End Role="TicketResponse" Type="Self.TicketResponse" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ticket">
+              <PropertyRef Name="TicketId" />
+            </Principal>
+            <Dependent Role="TicketResponse">
+              <PropertyRef Name="TicketId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ATSEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Accounts" EntityType="Self.Account" />
+          <EntitySet Name="Admins" EntityType="Self.Admin" />
+          <EntitySet Name="AdminKeys" EntityType="Self.AdminKey" />
+          <EntitySet Name="Answers" EntityType="Self.Answer" />
+          <EntitySet Name="Applicants" EntityType="Self.Applicant" />
+          <EntitySet Name="Candidates" EntityType="Self.Candidate" />
+          <EntitySet Name="CandidateQualifications" EntityType="Self.CandidateQualification" />
+          <EntitySet Name="CandidateSkills" EntityType="Self.CandidateSkill" />
+          <EntitySet Name="DripEmails" EntityType="Self.DripEmail" />
+          <EntitySet Name="EmailTemplates" EntityType="Self.EmailTemplate" />
+          <EntitySet Name="Jobs" EntityType="Self.Job" />
+          <EntitySet Name="Plans" EntityType="Self.Plan" />
+          <EntitySet Name="Platforms" EntityType="Self.Platform" />
+          <EntitySet Name="PostedJobs" EntityType="Self.PostedJob" />
+          <EntitySet Name="Qualifications" EntityType="Self.Qualification" />
+          <EntitySet Name="Questionairs" EntityType="Self.Questionair" />
+          <EntitySet Name="Recruiters" EntityType="Self.Recruiter" />
+          <EntitySet Name="RecSMTPs" EntityType="Self.RecSMTP" />
+          <EntitySet Name="ResumeSources" EntityType="Self.ResumeSource" />
+          <EntitySet Name="Skills" EntityType="Self.Skill" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+          <EntitySet Name="Tickets" EntityType="Self.Ticket" />
+          <EntitySet Name="TicketResponses" EntityType="Self.TicketResponse" />
+          <EntitySet Name="UserPlans" EntityType="Self.UserPlan" />
+          <AssociationSet Name="FK_Accounts_Recruiter" Association="Self.FK_Accounts_Recruiter">
+            <End Role="Recruiter" EntitySet="Recruiters" />
+            <End Role="Accounts" EntitySet="Accounts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AdminKeys_Admin" Association="Self.FK_AdminKeys_Admin">
+            <End Role="Admin" EntitySet="Admins" />
+            <End Role="AdminKeys" EntitySet="AdminKeys" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Recruiter_Admin" Association="Self.FK_Recruiter_Admin">
+            <End Role="Admin" EntitySet="Admins" />
+            <End Role="Recruiter" EntitySet="Recruiters" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Applicant_Candidate" Association="Self.FK_Applicant_Candidate">
+            <End Role="Candidate" EntitySet="Candidates" />
+            <End Role="Applicant" EntitySet="Applicants" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Applicant_Jobs" Association="Self.FK_Applicant_Jobs">
+            <End Role="Jobs" EntitySet="Jobs" />
+            <End Role="Applicant" EntitySet="Applicants" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Candidate_Recruiter" Association="Self.FK_Candidate_Recruiter">
+            <End Role="Recruiter" EntitySet="Recruiters" />
+            <End Role="Candidate" EntitySet="Candidates" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Candidate_ResumeSource" Association="Self.FK_Candidate_ResumeSource">
+            <End Role="ResumeSource" EntitySet="ResumeSources" />
+            <End Role="Candidate" EntitySet="Candidates" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CandidateQualification_Candidate" Association="Self.FK_CandidateQualification_Candidate">
+            <End Role="Candidate" EntitySet="Candidates" />
+            <End Role="CandidateQualification" EntitySet="CandidateQualifications" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CandidateSkills_Candidate" Association="Self.FK_CandidateSkills_Candidate">
+            <End Role="Candidate" EntitySet="Candidates" />
+            <End Role="CandidateSkills" EntitySet="CandidateSkills" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CandidateQualification_Qualification" Association="Self.FK_CandidateQualification_Qualification">
+            <End Role="Qualification" EntitySet="Qualifications" />
+            <End Role="CandidateQualification" EntitySet="CandidateQualifications" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CandidateSkills_Skills" Association="Self.FK_CandidateSkills_Skills">
+            <End Role="Skills" EntitySet="Skills" />
+            <End Role="CandidateSkills" EntitySet="CandidateSkills" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DripEmails_Recruiter" Association="Self.FK_DripEmails_Recruiter">
+            <End Role="Recruiter" EntitySet="Recruiters" />
+            <End Role="DripEmails" EntitySet="DripEmails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EmailTemplates_Recruiter" Association="Self.FK_EmailTemplates_Recruiter">
+            <End Role="Recruiter" EntitySet="Recruiters" />
+            <End Role="EmailTemplates" EntitySet="EmailTemplates" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Jobs_Questionair" Association="Self.FK_Jobs_Questionair">
+            <End Role="Questionair" EntitySet="Questionairs" />
+            <End Role="Jobs" EntitySet="Jobs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Jobs_Recruiter" Association="Self.FK_Jobs_Recruiter">
+            <End Role="Recruiter" EntitySet="Recruiters" />
+            <End Role="Jobs" EntitySet="Jobs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PostedJobs_Jobs" Association="Self.FK_PostedJobs_Jobs">
+            <End Role="Jobs" EntitySet="Jobs" />
+            <End Role="PostedJobs" EntitySet="PostedJobs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserPlan_Plan" Association="Self.FK_UserPlan_Plan">
+            <End Role="Plan" EntitySet="Plans" />
+            <End Role="UserPlan" EntitySet="UserPlans" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PostedJobs_Platforms" Association="Self.FK_PostedJobs_Platforms">
+            <End Role="Platforms" EntitySet="Platforms" />
+            <End Role="PostedJobs" EntitySet="PostedJobs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Qualification_Recruiter" Association="Self.FK_Qualification_Recruiter">
+            <End Role="Recruiter" EntitySet="Recruiters" />
+            <End Role="Qualification" EntitySet="Qualifications" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Questionair_Recruiter" Association="Self.FK_Questionair_Recruiter">
+            <End Role="Recruiter" EntitySet="Recruiters" />
+            <End Role="Questionair" EntitySet="Questionairs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RecSMTP_Recruiter" Association="Self.FK_RecSMTP_Recruiter">
+            <End Role="Recruiter" EntitySet="Recruiters" />
+            <End Role="RecSMTP" EntitySet="RecSMTPs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ResumeSource_Recruiter" Association="Self.FK_ResumeSource_Recruiter">
+            <End Role="Recruiter" EntitySet="Recruiters" />
+            <End Role="ResumeSource" EntitySet="ResumeSources" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Skills_Recruiter" Association="Self.FK_Skills_Recruiter">
+            <End Role="Recruiter" EntitySet="Recruiters" />
+            <End Role="Skills" EntitySet="Skills" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Ticket_Recruiter" Association="Self.FK_Ticket_Recruiter">
+            <End Role="Recruiter" EntitySet="Recruiters" />
+            <End Role="Ticket" EntitySet="Tickets" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserPlan_Recruiter" Association="Self.FK_UserPlan_Recruiter">
+            <End Role="Recruiter" EntitySet="Recruiters" />
+            <End Role="UserPlan" EntitySet="UserPlans" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TicketResponse_Ticket" Association="Self.FK_TicketResponse_Ticket">
+            <End Role="Ticket" EntitySet="Tickets" />
+            <End Role="TicketResponse" EntitySet="TicketResponses" />
+          </AssociationSet>
+          <FunctionImport Name="sp_alterdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_creatediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_dropdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(ATSModel.sp_helpdiagramdefinition_Result)">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(ATSModel.sp_helpdiagrams_Result)">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_renamediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="new_diagramname" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_upgraddiagrams" />
+          <EntitySet Name="Questions" EntityType="ATSModel.Question" />
+          <AssociationSet Name="FK_Answers_Questions" Association="ATSModel.FK_Answers_Questions">
+            <End Role="Question" EntitySet="Questions" />
+            <End Role="Answer" EntitySet="Answers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Questions_Questionair" Association="ATSModel.FK_Questions_Questionair">
+            <End Role="Questionair" EntitySet="Questionairs" />
+            <End Role="Question" EntitySet="Questions" />
+          </AssociationSet>
+          <EntitySet Name="CareerPages" EntityType="ATSModel.CareerPage" />
+          <AssociationSet Name="FK_CareerPages_Recruiter" Association="ATSModel.FK_CareerPages_Recruiter">
+            <End Role="Recruiter" EntitySet="Recruiters" />
+            <End Role="CareerPage" EntitySet="CareerPages" />
+          </AssociationSet>
+        </EntityContainer>
+        <ComplexType Name="sp_helpdiagramdefinition_Result">
+          <Property Type="Int32" Name="version" Nullable="true" />
+          <Property Type="Binary" Name="definition" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_helpdiagrams_Result">
+          <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+          <Property Type="Int32" Name="OwnerID" Nullable="false" />
+        </ComplexType>
+        <EntityType Name="Question">
+          <Key>
+            <PropertyRef Name="QuestionId" />
+          </Key>
+          <Property Name="QuestionId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Question1" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="QuestionairId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Answers" Relationship="ATSModel.FK_Answers_Questions" FromRole="Question" ToRole="Answer" />
+          <NavigationProperty Name="Questionair" Relationship="ATSModel.FK_Questions_Questionair" FromRole="Question" ToRole="Questionair" />
+        </EntityType>
+        <Association Name="FK_Answers_Questions">
+          <End Type="ATSModel.Question" Role="Question" Multiplicity="1" />
+          <End Type="ATSModel.Answer" Role="Answer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Question">
+              <PropertyRef Name="QuestionId" />
+            </Principal>
+            <Dependent Role="Answer">
+              <PropertyRef Name="QuestionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Questions_Questionair">
+          <End Type="ATSModel.Questionair" Role="Questionair" Multiplicity="1" />
+          <End Type="ATSModel.Question" Role="Question" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Questionair">
+              <PropertyRef Name="QuestionairId" />
+            </Principal>
+            <Dependent Role="Question">
+              <PropertyRef Name="QuestionairId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="CareerPage">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Heading" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="RecId" Type="Int32" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="UpdateDate" Type="DateTime" Precision="3" />
+          <Property Name="Intro" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="ExternalLogo" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Recruiter" Relationship="ATSModel.FK_CareerPages_Recruiter" FromRole="CareerPage" ToRole="Recruiter" />
+        </EntityType>
+        <Association Name="FK_CareerPages_Recruiter">
+          <End Type="ATSModel.Recruiter" Role="Recruiter" Multiplicity="1" />
+          <End Type="ATSModel.CareerPage" Role="CareerPage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Recruiter">
+              <PropertyRef Name="RecId" />
+            </Principal>
+            <Dependent Role="CareerPage">
+              <PropertyRef Name="RecId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ATSModelStoreContainer" CdmEntityContainer="ATSEntities">
+          <EntitySetMapping Name="Accounts">
+            <EntityTypeMapping TypeName="ATSModel.Account">
+              <MappingFragment StoreEntitySet="Accounts">
+                <ScalarProperty Name="AccountId" ColumnName="AccountId" />
+                <ScalarProperty Name="APIKey" ColumnName="APIKey" />
+                <ScalarProperty Name="APISecret" ColumnName="APISecret" />
+                <ScalarProperty Name="Token" ColumnName="Token" />
+                <ScalarProperty Name="Expiry" ColumnName="Expiry" />
+                <ScalarProperty Name="AccountName" ColumnName="AccountName" />
+                <ScalarProperty Name="APIValue1" ColumnName="APIValue1" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="RecId" ColumnName="RecId" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Admins">
+            <EntityTypeMapping TypeName="ATSModel.Admin">
+              <MappingFragment StoreEntitySet="Admin">
+                <ScalarProperty Name="AdminId" ColumnName="AdminId" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="IsSuperAdmin" ColumnName="IsSuperAdmin" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AdminKeys">
+            <EntityTypeMapping TypeName="ATSModel.AdminKey">
+              <MappingFragment StoreEntitySet="AdminKeys">
+                <ScalarProperty Name="AdminKeyId" ColumnName="AdminKeyId" />
+                <ScalarProperty Name="AdminAPIKey" ColumnName="AdminAPIKey" />
+                <ScalarProperty Name="AdminAPIKeySecret" ColumnName="AdminAPIKeySecret" />
+                <ScalarProperty Name="AdminAPiValue" ColumnName="AdminAPiValue" />
+                <ScalarProperty Name="AdminAPIToken" ColumnName="AdminAPIToken" />
+                <ScalarProperty Name="Expiry" ColumnName="Expiry" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="AdminId" ColumnName="AdminId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Answers">
+            <EntityTypeMapping TypeName="ATSModel.Answer">
+              <MappingFragment StoreEntitySet="Answers">
+                <ScalarProperty Name="IsRight" ColumnName="IsRight" />
+                <ScalarProperty Name="AnswerId" ColumnName="AnswerId" />
+                <ScalarProperty Name="Answer1" ColumnName="Answer" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="QuestionId" ColumnName="QuestionId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Applicants">
+            <EntityTypeMapping TypeName="ATSModel.Applicant">
+              <MappingFragment StoreEntitySet="Applicant">
+                <ScalarProperty Name="ApplicantId" ColumnName="ApplicantId" />
+                <ScalarProperty Name="JobId" ColumnName="JobId" />
+                <ScalarProperty Name="CanId" ColumnName="CanId" />
+                <ScalarProperty Name="ApplicantFullName" ColumnName="ApplicantFullName" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="EmailSent" ColumnName="EmailSent" />
+                <ScalarProperty Name="ConfirmationDone" ColumnName="ConfirmationDone" />
+                <ScalarProperty Name="IsHired" ColumnName="IsHired" />
+                <ScalarProperty Name="IsInterviewed" ColumnName="IsInterviewed" />
+                <ScalarProperty Name="IsShortlisted" ColumnName="IsShortlisted" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Candidates">
+            <EntityTypeMapping TypeName="ATSModel.Candidate">
+              <MappingFragment StoreEntitySet="Candidate">
+                <ScalarProperty Name="CanId" ColumnName="CanId" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="MobileNumber" ColumnName="MobileNumber" />
+                <ScalarProperty Name="SecondaryPhone" ColumnName="SecondaryPhone" />
+                <ScalarProperty Name="NextofKinName" ColumnName="NextofKinName" />
+                <ScalarProperty Name="NextofKinPhone" ColumnName="NextofKinPhone" />
+                <ScalarProperty Name="InCaseOfEmergency" ColumnName="InCaseOfEmergency" />
+                <ScalarProperty Name="Experience" ColumnName="Experience" />
+                <ScalarProperty Name="Qualification" ColumnName="Qualification" />
+                <ScalarProperty Name="QualificationType" ColumnName="QualificationType" />
+                <ScalarProperty Name="Interests" ColumnName="Interests" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
+                <ScalarProperty Name="CVFile" ColumnName="CVFile" />
+                <ScalarProperty Name="CVDescription" ColumnName="CVDescription" />
+                <ScalarProperty Name="NICFile" ColumnName="NICFile" />
+                <ScalarProperty Name="DegreeFile1" ColumnName="DegreeFile1" />
+                <ScalarProperty Name="DegreeFile2" ColumnName="DegreeFile2" />
+                <ScalarProperty Name="DegreeFile3" ColumnName="DegreeFile3" />
+                <ScalarProperty Name="DegreeFile4" ColumnName="DegreeFile4" />
+                <ScalarProperty Name="PassportFile" ColumnName="PassportFile" />
+                <ScalarProperty Name="FatherName" ColumnName="FatherName" />
+                <ScalarProperty Name="Religion" ColumnName="Religion" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="RecruitmentStatus" ColumnName="RecruitmentStatus" />
+                <ScalarProperty Name="ResumeSourceId" ColumnName="ResumeSourceId" />
+                <ScalarProperty Name="ApplicationType" ColumnName="ApplicationType" />
+                <ScalarProperty Name="IsQualified" ColumnName="IsQualified" />
+                <ScalarProperty Name="RecId" ColumnName="RecId" />
+                <ScalarProperty Name="MarksObtained" ColumnName="MarksObtained" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CandidateQualifications">
+            <EntityTypeMapping TypeName="ATSModel.CandidateQualification">
+              <MappingFragment StoreEntitySet="CandidateQualification">
+                <ScalarProperty Name="CanQualificationId" ColumnName="CanQualificationId" />
+                <ScalarProperty Name="QualificationId" ColumnName="QualificationId" />
+                <ScalarProperty Name="CanId" ColumnName="CanId" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CandidateSkills">
+            <EntityTypeMapping TypeName="ATSModel.CandidateSkill">
+              <MappingFragment StoreEntitySet="CandidateSkills">
+                <ScalarProperty Name="CandidateSkillId" ColumnName="CandidateSkillId" />
+                <ScalarProperty Name="SkillId" ColumnName="SkillId" />
+                <ScalarProperty Name="CanId" ColumnName="CanId" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DripEmails">
+            <EntityTypeMapping TypeName="ATSModel.DripEmail">
+              <MappingFragment StoreEntitySet="DripEmails">
+                <ScalarProperty Name="DripId" ColumnName="DripId" />
+                <ScalarProperty Name="JobId" ColumnName="JobId" />
+                <ScalarProperty Name="TemplateId" ColumnName="TemplateId" />
+                <ScalarProperty Name="ApplicantId" ColumnName="ApplicantId" />
+                <ScalarProperty Name="CandidateId" ColumnName="CandidateId" />
+                <ScalarProperty Name="IsScheduled" ColumnName="IsScheduled" />
+                <ScalarProperty Name="ScheduledDateTime" ColumnName="ScheduledDateTime" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="IsSentSuccess" ColumnName="IsSentSuccess" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="EmailBodyText" ColumnName="EmailBodyText" />
+                <ScalarProperty Name="Subject" ColumnName="Subject" />
+                <ScalarProperty Name="CC" ColumnName="CC" />
+                <ScalarProperty Name="BCC" ColumnName="BCC" />
+                <ScalarProperty Name="Attachement1" ColumnName="Attachement1" />
+                <ScalarProperty Name="Attachement2" ColumnName="Attachement2" />
+                <ScalarProperty Name="Attachement3" ColumnName="Attachement3" />
+                <ScalarProperty Name="Attachement4" ColumnName="Attachement4" />
+                <ScalarProperty Name="Link" ColumnName="Link" />
+                <ScalarProperty Name="IsBodyHtml" ColumnName="IsBodyHtml" />
+                <ScalarProperty Name="RecId" ColumnName="RecId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EmailTemplates">
+            <EntityTypeMapping TypeName="ATSModel.EmailTemplate">
+              <MappingFragment StoreEntitySet="EmailTemplates">
+                <ScalarProperty Name="TemplateId" ColumnName="TemplateId" />
+                <ScalarProperty Name="TemplateName" ColumnName="TemplateName" />
+                <ScalarProperty Name="TemplateHtml" ColumnName="TemplateHtml" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
+                <ScalarProperty Name="RecId" ColumnName="RecId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Jobs">
+            <EntityTypeMapping TypeName="ATSModel.Job">
+              <MappingFragment StoreEntitySet="Jobs">
+                <ScalarProperty Name="JobId" ColumnName="JobId" />
+                <ScalarProperty Name="JobName" ColumnName="JobName" />
+                <ScalarProperty Name="JobDescription" ColumnName="JobDescription" />
+                <ScalarProperty Name="JobLocation" ColumnName="JobLocation" />
+                <ScalarProperty Name="JobCity" ColumnName="JobCity" />
+                <ScalarProperty Name="JobState" ColumnName="JobState" />
+                <ScalarProperty Name="JobCountry" ColumnName="JobCountry" />
+                <ScalarProperty Name="JobIntro" ColumnName="JobIntro" />
+                <ScalarProperty Name="Experience" ColumnName="Experience" />
+                <ScalarProperty Name="Qualification" ColumnName="Qualification" />
+                <ScalarProperty Name="QualificationType" ColumnName="QualificationType" />
+                <ScalarProperty Name="JobType" ColumnName="JobType" />
+                <ScalarProperty Name="JobSalary" ColumnName="JobSalary" />
+                <ScalarProperty Name="Currency" ColumnName="Currency" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="IsPosted" ColumnName="IsPosted" />
+                <ScalarProperty Name="IsReposted" ColumnName="IsReposted" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
+                <ScalarProperty Name="UpdateBy" ColumnName="UpdateBy" />
+                <ScalarProperty Name="IsClosed" ColumnName="IsClosed" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="RecId" ColumnName="RecId" />
+                <ScalarProperty Name="QuestionairId" ColumnName="QuestionairId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Plans">
+            <EntityTypeMapping TypeName="ATSModel.Plan">
+              <MappingFragment StoreEntitySet="Plan">
+                <ScalarProperty Name="PlanId" ColumnName="PlanId" />
+                <ScalarProperty Name="PlanName" ColumnName="PlanName" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="Currency" ColumnName="Currency" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Platforms">
+            <EntityTypeMapping TypeName="ATSModel.Platform">
+              <MappingFragment StoreEntitySet="Platforms">
+                <ScalarProperty Name="PlatformId" ColumnName="PlatformId" />
+                <ScalarProperty Name="PlatformName" ColumnName="PlatformName" />
+                <ScalarProperty Name="IsPaid" ColumnName="IsPaid" />
+                <ScalarProperty Name="Desccription" ColumnName="Desccription" />
+                <ScalarProperty Name="PlatformKey" ColumnName="PlatformKey" />
+                <ScalarProperty Name="PlatfromValue" ColumnName="PlatfromValue" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PostedJobs">
+            <EntityTypeMapping TypeName="ATSModel.PostedJob">
+              <MappingFragment StoreEntitySet="PostedJobs">
+                <ScalarProperty Name="PostedJobId" ColumnName="PostedJobId" />
+                <ScalarProperty Name="JobId" ColumnName="JobId" />
+                <ScalarProperty Name="PlatformId" ColumnName="PlatformId" />
+                <ScalarProperty Name="IsPaid" ColumnName="IsPaid" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="PaymentId" ColumnName="PaymentId" />
+                <ScalarProperty Name="PaymentIdString" ColumnName="PaymentIdString" />
+                <ScalarProperty Name="PaymentType" ColumnName="PaymentType" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Qualifications">
+            <EntityTypeMapping TypeName="ATSModel.Qualification">
+              <MappingFragment StoreEntitySet="Qualification">
+                <ScalarProperty Name="QualificationId" ColumnName="QualificationId" />
+                <ScalarProperty Name="QualificationName" ColumnName="QualificationName" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="RecId" ColumnName="RecId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Questionairs">
+            <EntityTypeMapping TypeName="ATSModel.Questionair">
+              <MappingFragment StoreEntitySet="Questionair">
+                <ScalarProperty Name="QuestionairId" ColumnName="QuestionairId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="RecId" ColumnName="RecId" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Recruiters">
+            <EntityTypeMapping TypeName="ATSModel.Recruiter">
+              <MappingFragment StoreEntitySet="Recruiter">
+                <ScalarProperty Name="RecId" ColumnName="RecId" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="UserPlanId" ColumnName="UserPlanId" />
+                <ScalarProperty Name="Logo" ColumnName="Logo" />
+                <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+                <ScalarProperty Name="CompanyAddress" ColumnName="CompanyAddress" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="ExternalLogo" ColumnName="ExternalLogo" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
+                <ScalarProperty Name="PaymentType" ColumnName="PaymentType" />
+                <ScalarProperty Name="AdminId" ColumnName="AdminId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RecSMTPs">
+            <EntityTypeMapping TypeName="ATSModel.RecSMTP">
+              <MappingFragment StoreEntitySet="RecSMTP">
+                <ScalarProperty Name="RecSMTPId" ColumnName="RecSMTPId" />
+                <ScalarProperty Name="RecId" ColumnName="RecId" />
+                <ScalarProperty Name="SMTP" ColumnName="SMTP" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Network" ColumnName="Network" />
+                <ScalarProperty Name="IsSSL" ColumnName="IsSSL" />
+                <ScalarProperty Name="Port" ColumnName="Port" />
+                <ScalarProperty Name="IP" ColumnName="IP" />
+                <ScalarProperty Name="HostName" ColumnName="HostName" />
+                <ScalarProperty Name="ClientName" ColumnName="ClientName" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="SMTPKey" ColumnName="SMTPKey" />
+                <ScalarProperty Name="SMTPValue" ColumnName="SMTPValue" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ResumeSources">
+            <EntityTypeMapping TypeName="ATSModel.ResumeSource">
+              <MappingFragment StoreEntitySet="ResumeSource">
+                <ScalarProperty Name="ResumeSourceId" ColumnName="ResumeSourceId" />
+                <ScalarProperty Name="SourceName" ColumnName="SourceName" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="RecId" ColumnName="RecId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Skills">
+            <EntityTypeMapping TypeName="ATSModel.Skill">
+              <MappingFragment StoreEntitySet="Skills">
+                <ScalarProperty Name="SkillId" ColumnName="SkillId" />
+                <ScalarProperty Name="SkillName" ColumnName="SkillName" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="RecId" ColumnName="RecId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="ATSModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tickets">
+            <EntityTypeMapping TypeName="ATSModel.Ticket">
+              <MappingFragment StoreEntitySet="Ticket">
+                <ScalarProperty Name="TicketId" ColumnName="TicketId" />
+                <ScalarProperty Name="Subject" ColumnName="Subject" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
+                <ScalarProperty Name="RecId" ColumnName="RecId" />
+                <ScalarProperty Name="FileName" ColumnName="FileName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TicketResponses">
+            <EntityTypeMapping TypeName="ATSModel.TicketResponse">
+              <MappingFragment StoreEntitySet="TicketResponse">
+                <ScalarProperty Name="ResponseId" ColumnName="ResponseId" />
+                <ScalarProperty Name="Answer" ColumnName="Answer" />
+                <ScalarProperty Name="FileName" ColumnName="FileName" />
+                <ScalarProperty Name="TicketId" ColumnName="TicketId" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserPlans">
+            <EntityTypeMapping TypeName="ATSModel.UserPlan">
+              <MappingFragment StoreEntitySet="UserPlan">
+                <ScalarProperty Name="UserPlanId" ColumnName="UserPlanId" />
+                <ScalarProperty Name="PlanId" ColumnName="PlanId" />
+                <ScalarProperty Name="RecId" ColumnName="RecId" />
+                <ScalarProperty Name="IsSubscribed" ColumnName="IsSubscribed" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="IsPlanPurchased" ColumnName="IsPlanPurchased" />
+                <ScalarProperty Name="Expiry" ColumnName="Expiry" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="ATSModel.Store.sp_alterdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="ATSModel.Store.sp_creatediagram" />
+          <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="ATSModel.Store.sp_dropdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="ATSModel.Store.sp_helpdiagramdefinition">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ATSModel.sp_helpdiagramdefinition_Result">
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="ATSModel.Store.sp_helpdiagrams">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ATSModel.sp_helpdiagrams_Result">
+                <ScalarProperty Name="Database" ColumnName="Database" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Owner" ColumnName="Owner" />
+                <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="ATSModel.Store.sp_renamediagram" />
+          <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="ATSModel.Store.sp_upgraddiagrams" />
+          <EntitySetMapping Name="Questions">
+            <EntityTypeMapping TypeName="ATSModel.Question">
+              <MappingFragment StoreEntitySet="Questions">
+                <ScalarProperty Name="QuestionairId" ColumnName="QuestionairId" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="Question1" ColumnName="Question" />
+                <ScalarProperty Name="QuestionId" ColumnName="QuestionId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CareerPages">
+            <EntityTypeMapping TypeName="ATSModel.CareerPage">
+              <MappingFragment StoreEntitySet="CareerPages">
+                <ScalarProperty Name="ExternalLogo" ColumnName="ExternalLogo" />
+                <ScalarProperty Name="Intro" ColumnName="Intro" />
+                <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="RecId" ColumnName="RecId" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Heading" ColumnName="Heading" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

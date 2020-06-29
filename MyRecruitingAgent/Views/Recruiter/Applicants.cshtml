@@ -1,0 +1,80 @@
+﻿@model List<MyRecruitingAgent.Models.Applicant>
+@{
+                /**/
+
+                ViewBag.Title = "Applicants";
+                Layout = "~/Views/Shared/_LayoutRec.cshtml";
+                int Counter = 0;
+}
+
+<h2>Applicants List</h2>
+
+<div class="container">
+    @*<div>
+            <button type="button" class="btn btn-success">Add Job</button>
+        </div>*@
+    <div class="row">
+        <div class="row">
+            <div class="col-sm-3" style="border:1px solid">
+                <h4>Jobs List</h4>
+                <div>
+                    <ul>
+                        @foreach (var item in ViewBag.JobList)
+                        {
+                            <li><a href="@Url.Action("Applicants","Recruiter",new { Jobid=item.JobId })">@item.JobName</a></li>
+                        }
+                    </ul>
+                </div>
+            </div>
+            <div class="col-sm-9">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Sr.No</th>
+                            <th>Applicant Name</th>
+                            <th>Status</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            Counter++;
+                            <tr>
+
+                                <td>@Counter</td>
+                                <td>@item.ApplicantFullName</td>
+                                <td>
+                                    @if (item.IsHired == true)
+                                    {
+                                        @:Hired
+                                    }
+                                    else if (item.IsShortlisted == true)
+                                    {
+                                        @:Shortlisted
+                                    }
+                                    else if (item.IsInterviewed == true)
+                                    {
+                                        @:Interviewed
+                                    }
+                                </td>
+                               
+                                <td>
+                                    <a href="@Url.Action("","")" class="btn btn-primary btn-xs">Send Email</a>
+                                </td>
+                            </tr>
+
+                        }
+
+
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    IsActive("Applicants");
+</script>

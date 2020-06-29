@@ -1,0 +1,66 @@
+﻿@model MyRecruitingAgent.Models.Recruiter
+@{
+    ViewBag.Title = "RecruiterSetting";
+    Layout = "~/Views/Shared/_LayoutRec.cshtml";
+}
+
+<h2>RecruiterSetting</h2>
+
+
+<div class="row">
+
+    <div class="col-md-12">
+
+        <form action="@Url.Action("RecruiterSetting","Recruiter")" method="post" enctype="multipart/form-data">
+
+            <span style="color:red;margin-top:5px">@ViewBag.Error</span>
+            <div class="row">
+
+                <div class="col-md-12">
+                    <div class="row">
+                      
+                        <div class="col-md-6">
+                            <input type="hidden" name="RecId" id="RecId" value="@Model.RecId" />
+                            <label>User Name</label>
+                            @Html.TextBoxFor(x => x.Username, new { @class = "form-control" })
+                            <label>Password</label>
+                            @Html.TextBoxFor(x => x.Password, new { @class = "form-control", @type = "Password" })
+                            <label>Company Name</label>
+                            @Html.TextBoxFor(x => x.CompanyAddress, new { @class = "form-control" })
+                            <label>Company Address</label>
+                            @Html.TextBoxFor(x => x.CompanyAddress, new { @class = "form-control" })
+                            <label>City</label>
+                            @Html.TextBoxFor(x => x.City, new { @class = "form-control" })
+                            <label>State</label>
+                            @Html.TextBoxFor(x => x.State, new { @class = "form-control" })
+
+                            @*<label>Description</label>
+                                @Html.TextAreaFor(x => x.City, new { @class = "ckeditor" })*@
+
+                        </div>
+                        <div class="col-md-6">
+                            <label>Logo</label>
+                            <input type="file" class="form-control btn-info" name="LogoFile" id="LogoFile" />
+                            <br />
+                            <div style="border:dashed 1px !important"><img class="img-responsive pt-5 pb-5 pl-5 pr-5" src="~/Content/Images/RecLogo/@Model.RecId/@Model.Logo" style="max-height:100px;" /></div>
+                            @*<label>External Logo</label>
+                            <input type="file" class="form-control btn-primary" name="ExternalLogo" id="ExternalLogo" />
+                            <br />
+                            <div><img class="img-responsive" src="~/Content/Images/RecLogo/@Model.RecId/@Model.ExternalLogo" style="height:100px;min-height:100px;" /></div>*@
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br />
+            <div class="row">
+
+                <div class="col-md-12">
+                    <a href="@Url.Action("Setting","Recruiter")" class="btn btn-danger btn-xs"><i class="fa fa-times"></i>Cancel</a>
+                    <button type="submit" class="btn btn-success btn-xs"><i class="fa fa-save"></i> Save Changes</button>
+                </div>
+            </div>
+        </form>
+
+    </div>
+</div>

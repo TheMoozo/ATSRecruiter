@@ -1,0 +1,93 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - M.R.A</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/ckeditor")
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+    <style>
+        .HeaderRec .navbar-brand {
+            height: 50px;
+        }
+
+        .HeaderRec .nav > li > a {
+            padding-top: 20px;
+            padding-bottom: 20px;
+        }
+
+        .HeaderRec .navbar-toggle {
+            padding: 10px;
+            margin: 25px 15px 25px 0;
+        }
+    </style>
+    @Scripts.Render("~/bundles/jquery")
+    <script>
+        function IsActive(Id) {
+            $("#" + Id + "").addClass("active");
+        }
+    </script>
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("My Recruiting Agent", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                    <li>@Html.ActionLink("About", "About", "Home")</li>
+                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="HeaderRec">
+        <nav class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar3">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="http://disputebills.com">
+                        <img src="~/Content/Images/Logo/logo.png" />
+                    </a>
+                </div>
+                <div id="navbar3" class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav navbar-right">
+                        @*<li id="Home" class="">@Html.ActionLink("Home", "Index", "Recruiter")</li>*@
+                        <li id="My-Jobs" class="">@Html.ActionLink("My Jobs", "Jobs", "Recruiter")</li>
+                        <li id="Applicants" class="">@Html.ActionLink("Applicants", "Applicants", "Recruiter")</li>
+                        <li id="Sourcing" class="">@Html.ActionLink("Sourcing", "Sourcing", "Recruiter")</li>
+                        <li id="Campaigns" class="">@Html.ActionLink("Interview/Campaigns", "Campaigns", "Recruiter")</li>
+                        <li id="Setting" class="">@Html.ActionLink("Setting", "Setting", "Recruiter")</li>
+                        <li><a>Hello @MyRecruitingAgent.Models.LoginHelper.GetCurrentLoginUser().Username!</a></li>
+                        <li><a href="@Url.Action("Logout","Recruiter")">Logout</a></li>
+                    </ul>
+                </div>
+                <!--/.nav-collapse -->
+            </div>
+            <!--/.container-fluid -->
+        </nav>
+    </div>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer></footer>
+    </div>
+
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

@@ -1,0 +1,94 @@
+﻿@model List<MyRecruitingAgent.Models.Candidate>
+@{
+    ViewBag.Title = "Sourcing";
+    Layout = "~/Views/Shared/_LayoutRec.cshtml";
+    int Counter = 0;
+    int i = 0;
+}
+
+<h2>Sourcing</h2>
+
+<script>
+    IsActive("Sourcing");
+</script>
+
+<div class="search-container">
+    <form action="@Url.Action("Sourcing","Recruiter")">
+        <div class="col-md-12 mb-5">
+            <input type="text" placeholder="Search.." name="Search" value="@ViewBag.Search">
+            <a class="btn btn-success btn-xs" value="MyCandidate" href="@Url.Action("AddCandidate","Recruiter")">Add Candidate</a>
+            <button type="submit" class="btn btn-success btn-xs">Upload Document</button>
+        </div>
+    </form>
+</div>
+<div class="col-md-12">
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Sr.No</th>
+                <th>Sourcing</th>
+                <th>First Name</th>
+                <th>Experience</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                Counter++;
+                <tr>
+                    <td>@Counter</td>
+                    <td>@item.RecruitmentStatus</td>
+
+                    <td>@item.FirstName</td>
+                    <td>@item.Experience</td>
+                    <td>
+                        <button type="button" onclick="loadpopup('@item.CanId')" data-toggle="modal" data-target="#CandidateSelect" class="btn btn-primary btn-xs">AssignToJob</button>
+                        <button type="button" class="btn btn-danger btn-xs">Email</button>
+                    </td>
+                </tr>
+
+            }
+
+        </tbody>
+    </table>
+</div>
+<div class="modal" id="CandidateSelect" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Add To Job</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form action="@Url.Action("AssignToJob","Recruiter")" method="post">
+                <div class="modal-body">
+                    <span style="color:red;margin-bottom:5px;">@ViewBag.Error</span>
+                    <input type="hidden" class="form-control" id="CanPoPId" name="CandidateId" />
+                    <label style="text-align:start">Assign To Job</label>
+                    @*@Html.DropDownListFor(x => x[i].CanId, new SelectList(ViewBag.Jobslist))*@
+                    @Html.DropDownList("JobId", (List<SelectListItem>)(ViewBag.Jobslist), "Select Job", new { @class = "form-control" })
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger btn-xs" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-success btn-xs">Save changes</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+
+<!-- Modal -->
+
+<script>
+    function loadpopup(candId) {
+
+        debugger;
+        $("#CanPoPId").val("");
+        $("#CanPoPId").val(candId);
+    }
+</script>

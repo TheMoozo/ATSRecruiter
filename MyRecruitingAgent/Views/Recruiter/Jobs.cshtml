@@ -1,0 +1,66 @@
+﻿@model List<MyRecruitingAgent.Models.Job>
+@{
+    ViewBag.Title = "Jobs";
+    Layout = "~/Views/Shared/_LayoutRec.cshtml";
+    int Counter = 0;
+}
+@*<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>*@
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+@*<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>*@
+<h2>Jobs List</h2>
+
+<script>
+    IsActive("My-Jobs");
+</script>
+
+<div class="row">
+    <a type="button" class="btn btn-success btn-xs" style="margin-bottom:5px;" href="@Url.Action("AddJobs","Recruiter")">Add Job</a>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Sr.No</th>
+                <th>Job Name</th>
+                <th>Salary</th>
+                <th>Currency</th>
+                <th>Experience</th>
+                <th>Job Type</th>
+                <th>Qualification</th>
+                <th>City</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                Counter++;
+                <tr>
+                    <td>@Counter</td>
+                    <td>@item.JobName</td>
+                    <td>@item.JobSalary</td>
+                    <td>@item.Currency</td>
+                    <td>@item.Experience Years</td>
+                    <td>@item.JobType</td>
+                    <td>@item.Qualification</td>
+                    <td>@item.JobCity</td>
+                    <td>
+                        <a href="@Url.Action("PostJob","Recruiter" , new {id=item.JobId })" class="btn btn-primary btn-xs">Post Job</a>
+                        <a href="@Url.Action("RepostJob","Recruiter", new { id = item.JobId })" class="btn btn-info btn-xs">RepostJob</a>
+                        <a href="@Url.Action("AddJobs","Recruiter",new { id=item.JobId })" class="btn btn-success btn-xs">EditJobs</a>
+                        <div class="dropdown">
+                            <a href="Javascript:;" class="btn btn-primary btn-xs dropdown-toggle" data-toggle="dropdown"><i class="fa fa-share"></i> Share </a>
+                            <div class="dropdown-menu">
+                                <a target="_blank" class="dropdown-item" href="@Url.Action("JobApplicationPage", "Home",new { Recruiter = item.RecId, Job = item.JobId })">Click to Open Share link</a>
+                            </div>
+                        </div>
+                        @*<a href="@Url.Action("AddJobs","Recruiter", new { id=item.JobId })" class="btn btn-warning btn-xs">CloseJob</a>
+                            <a href="@Url.Action("AddJobs","Recruiter", new { id=item.JobId })" class="btn btn-danger btn-xs">DeleteJob</a>*@
+
+                    </td>
+                </tr>
+            }
+
+
+        </tbody>
+    </table>
+</div>
+

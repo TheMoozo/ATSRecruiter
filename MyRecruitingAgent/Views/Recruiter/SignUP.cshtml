@@ -1,0 +1,79 @@
+﻿@model MyRecruitingAgent.Models.Recruiter
+@{
+    ViewBag.Title = "SignUP";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@*<link href="~/Content/Login.css" rel="stylesheet" />*@
+
+
+
+<div class="row">
+    <div class="col-md-12">
+
+        <h2>Recruiter Sign Up</h2>
+
+        @using (Html.BeginForm("SignUp", "Recruiter", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+        <form method="post" action="@Url.Action("SignUp","Recruiter")">
+
+            <div class="row">
+                <div class="col-md-6">
+                    <span style="color:red;margin-bottom:5px;">@ViewBag.Error</span>
+                    @Html.HiddenFor(x => x.RecId)
+                    <label>User Name</label>
+                    @Html.TextBoxFor(x => x.Username, new { required = "required", @placeholder = "UserName", @class = "form-control", @type = "Username" })
+                    <br />
+                    <label>Password</label>
+                    @Html.TextBoxFor(x => x.Password, new { required = "required", @placeholder = "Password", @class = "form-control", @type = "password" })
+                    <br />
+                    <label>User Plan Id</label>
+                    @Html.TextBoxFor(x => x.UserPlanId, new { @placeholder = "UserPlanID", @class = "form-control" })
+                    @*@Html.EditorFor(x => x.Logo, new { @placeholder = "UploadLogo", @class = "form-control",@type="file" })*@
+                    <br />
+                    <label>Company Logo</label>
+                    <input type="file" name="Logo" id="Logo" class="form-control" />
+                    <br />
+                    <label>Company Name</label>
+                    @Html.TextBoxFor(x => x.CompanyName, new { required = "required", @placeholder = "Company Name", @class = "form-control" })
+                </div>
+                <div class="col-md-6">
+                    <label>Company Address</label>
+                    @Html.TextBoxFor(x => x.CompanyAddress, new { required = "required", @placeholder = "Company Address", @class = "form-control" })
+                    <br />
+                    <label>City</label>
+                    @Html.TextBoxFor(x => x.City, new { @placeholder = "City", @class = "form-control" })
+                    <br />
+                    <label>State</label>
+                    @Html.TextBoxFor(x => x.State, new { @placeholder = "State", @class = "form-control" })
+                    @*@Html.RadioButtonFor(x => x.ExternalLogo, new { @placeholder = "External Logo", @class = "form-control" })*@
+                    <br />
+                    <label>Company External Logo</label>
+                    <input type="file" name="ExternalLogo" id="ExternalLogo" class="form-control" />
+                    @*<label>UserName</label>
+                @Html.TextBoxFor(x => x.CreateDate, "{0:dd/MM/yyyy}", new { required = "required", @class = "datefield form-control", @placeholder = "Enter Start date..." })
+                <label>UserName</label>
+                @Html.TextBoxFor(x => x.UpdateDate, "{0:dd/MM/yyyy}", new { required = "required", @class = "datefield form-control", @placeholder = "Enter Updata date..." })*@
+                    <br />
+                    <label>Payment Type</label>
+                    @Html.TextBoxFor(x => x.PaymentType, new { @placeholder = "Payment Type", @class = "form-control" })
+                    <input type="hidden" name="AdminId" id="AdminId" value="@Model.AdminId" />
+
+                </div>
+            </div>
+            <br />
+            <br />
+            <button type="submit" class="btn btn-success btn-sm" value="Save">Save Changes</button>
+            <a class="btn btn-danger btn-sm" href="@Url.Action("Login","Recruiter")">Cancel</a>
+        </form>
+        }
+
+    </div>
+
+</div>
+
+
+
+
+
+

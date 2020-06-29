@@ -1,0 +1,55 @@
+﻿@model MyRecruitingAgent.Models.CareerPage
+@{
+    ViewBag.Title = "CareerPage";
+    Layout = "~/Views/Shared/_LayoutRec.cshtml";
+}
+
+<h2>CareerPage</h2>
+
+<div class="row">
+
+    <div class="col-md-12">
+
+        <form action="@Url.Action("CareerPage","Recruiter")" method="post" enctype="multipart/form-data">
+
+            <span style="color:red;margin-top:5px">@ViewBag.Error</span>
+            <div class="row">
+                <div class="col-md-6">
+                    @Html.HiddenFor(x => x.RecId)
+                    @Html.HiddenFor(x => x.Id)
+                    <label>Heading</label>
+                    @Html.TextBoxFor(x => x.Heading, new { @class = "form-control" })
+                    <br />
+
+                    <label>Introduction</label>
+                    @Html.TextBoxFor(x => x.Intro, new { @class = "form-control" })
+                    <br />
+
+                    <label>Description</label>
+                    @Html.TextAreaFor(x => x.Description, new { @class = "ckeditor" })
+                    <br />
+                </div>
+                <div class="col-md-6">
+                    <label>Logo</label>
+                    <input type="file" class="form-control btn-info" name="LogoFile" id="LogoFile" />
+                    <br />
+                    <div style="border:dashed 1px !important"><img class="img-responsive pt-5 pb-5 pl-5 pr-5" src="~/Content/Images/RecLogo/@Model.RecId/@Model.ExternalLogo" style="max-height:100px;" /></div>
+                    @*<label>External Logo</label>
+                <input type="file" class="form-control btn-primary" name="ExternalLogo" id="ExternalLogo" />
+                <br />
+                <div><img class="img-responsive" src="~/Content/Images/RecLogo/@Model.RecId/@Model.ExternalLogo" style="height:100px;min-height:100px;" /></div>*@
+
+                </div>
+            </div>
+            <div class="row">
+
+                <div class="col-md-12">
+                    <a href="@Url.Action("Setting","Recruiter")" class="btn btn-danger btn-xs"><i class="fa fa-times"></i>Cancel</a>
+                    <button type="submit" class="btn btn-success btn-xs"><i class="fa fa-save"></i> Save Changes</button>
+                    <a target="_blank" class="btn btn-xs btn-info" href="@Url.Action("CareerPage","Home",new { Recruiter = Model.RecId })"><i class="fa fa-eye"></i> View Career Page</a>
+                </div>
+            </div>
+        </form>
+
+</div>
+</div>

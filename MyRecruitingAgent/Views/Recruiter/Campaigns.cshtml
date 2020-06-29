@@ -1,0 +1,194 @@
+﻿@model MyRecruitingAgent.Models.DripEmail
+@{
+    ViewBag.Title = "Campaigns";
+    Layout = "~/Views/Shared/_LayoutRec.cshtml";
+}
+
+<h2>Campaigns</h2>
+
+@*<link href="https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css" rel="stylesheet" />*@
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+<link href="~/Content/themes/base/jquery-ui.css" rel="stylesheet" />
+<link href="~/Content/themes/base/jquery-ui.min.css" rel="stylesheet" />
+<link href="~/Content/bootstrap-datetimepicker.min.css" rel="stylesheet" />
+
+
+<div class="container">
+    <div class="mb-5">
+        <button type="button" data-toggle="modal" data-target="#SendManualEmail" class="btn btn-primary btn-xs">
+            Send Manual Email
+        </button>
+        <button type="button" data-toggle="modal" data-target="#SendAutoEmail" class="btn btn-success btn-xs">Add Campaigns</button>
+
+    </div>
+
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Applicant</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr></tr>
+            <tr></tr>
+            <tr></tr>
+        </tbody>
+    </table>
+</div>
+
+<!-- Modal:PopUp Manual Send Email-->
+<div class="modal" id="SendManualEmail" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <!--Content-->
+        <div class="modal-content">
+            <!--Header-->
+            <div class="modal-header">
+                <p class="heading">Send Email</p>
+
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true" class="white-text">&times;</span>
+                </button>
+            </div>
+
+            <!--Body-->
+            <form action="@Url.Action("SendEmail","Recruiter")" method="post">
+                <div class="modal-body">
+                    <span style="color:red;margin-bottom:5px;">@ViewBag.Error</span>
+                    <input type="hidden" name="IsScheduled" value="false" />
+                    <div class="row">
+                        <div class="col-3">
+                            <label style="text-align:start">Send Email</label>
+                        </div>
+
+                        <div class="col-9">
+                            @Html.DropDownList("JobId", (List<SelectListItem>)(ViewBag.Jobslist), "Select Job", new { @class = "form-control" })
+                            @Html.TextBoxFor(x => x.ScheduledDateTime, new { @class = "datepicker" })
+                        </div>
+                    </div>
+                </div>
+
+                <!--Footer-->
+                <div class="modal-footer justify-content-center">
+                    <button type="button" class="btn btn-danger btn-xs" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-success btn-xs">Save changes</button>
+                </div>
+            </form>
+        </div>
+        <!--/.Content-->
+    </div>
+</div>
+<!-- Modal:PopUp Manual Send Email-->
+@*<div class="modal" id="SendManualEmail" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Send Email</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form action="@Url.Action("Campaigns","Recruiter")" method="post">
+                    <div class="modal-body">
+                        <span style="color:red;margin-bottom:5px;">@ViewBag.Error</span>
+                        <label style="text-align:start">Send Email</label>
+                        @Html.DropDownList("JobId", (List<SelectListItem>)(ViewBag.Jobslist), "Select Job", new { @class = "form-control" })
+                        <br />
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger btn-xs" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-success btn-xs">Save changes</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>*@
+
+<div class="modal" id="SendAutoEmail" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Send Email</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form action="@Url.Action("SendEmail","Recruiter")" method="post">
+                <div class="modal-body">
+                    <input type="hidden" name="IsScheduled" value="true" />
+                    <span style="color:red;margin-bottom:5px;">@ViewBag.Error</span>
+                    @*<input type="hidden" class="form-control" name="CandidateId" />*@
+                    @Html.HiddenFor(x => x.DripId)
+                    <label style="text-align:start">Subject</label>
+                    @Html.TextBoxFor(x => x.Subject, new { @class = "form-control" })
+                    <label style="text-align:start">Email Body</label>
+                    @Html.TextBoxFor(x => x.EmailBodyText, new { @class = "form-control" })
+                    <label style="text-align:start">TemplateId</label>
+                    @Html.TextBoxFor(x => x.TemplateId, new { @class = "form-control" })
+                    <label style="text-align:start">Send Email</label>
+                    @Html.DropDownList("JobId", (List<SelectListItem>)(ViewBag.Jobslist), "Select Job", new { @class = "form-control" })
+                    <br />
+                    @Html.TextBoxFor(x => x.ScheduledDateTime, new { @class = "datepicker" })
+
+                    @*<input type="text" onclick="datetime('@Model.ScheduledDateTime')" id="@Model.ScheduledDateTime" name="@Model.ScheduledDateTime" />*@
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger btn-xs" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-success btn-xs">Save changes</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script>
+    IsActive("Campaigns");
+</script>
+
+
+
+<script src="~/Scripts/jquery-ui-1.12.1.js"></script>
+<script src="~/Scripts/jquery-ui-1.12.1.min.js"></script>
+<script src="~/Scripts/moment.min.js"></script>
+@*<script src="~/Content/js/calendar/bootstrap-datepicker.min.js"></script>*@
+<script src="~/Scripts/bootstrap-datetimepicker.min.js"></script>
+
+
+
+<script>
+
+    $(function () {
+        $(".datepicker").datetimepicker();
+        //var d = new Date();
+        //var currMonth = d.getMonth();
+        //var currYear = d.getFullYear();
+        //var startingDate = new Date(currYear, currMonth, -20);
+        //$('#DueDate').datetimepicker({
+        //    format: "mm/dd/yyyy hh:ii p",
+        //    //minDate: 1,
+        //    startDate: startingDate,
+        //    changeYear: true,
+        //    todayBtn: 1,
+        //    yearRange: "2019:2050"
+    });
+    //$(function () {
+    //    $("#datepicker1").datetimepicker();
+    //    //var d = new Date();
+    //    //var currMonth = d.getMonth();
+    //    //var currYear = d.getFullYear();
+    //    //var startingDate = new Date(currYear, currMonth, -20);
+    //    //$('#DueDate').datetimepicker({
+    //    //    format: "mm/dd/yyyy hh:ii p",
+    //    //    //minDate: 1,
+    //    //    startDate: startingDate,
+    //    //    changeYear: true,
+    //    //    todayBtn: 1,
+    //    //    yearRange: "2019:2050"
+    //});
+
+       
+
+</script>
+
+

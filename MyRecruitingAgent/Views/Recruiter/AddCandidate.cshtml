@@ -1,0 +1,114 @@
+﻿@model MyRecruitingAgent.Models.Candidate
+@{
+    ViewBag.Title = "AddCandidate";
+    Layout = "~/Views/Shared/_LayoutRec.cshtml";
+}
+
+
+<div class="row">
+    <div class="col-md-12">
+        <h2>Add/Edit Candidate</h2>
+
+        <form method="post" action="@Url.Action("AddCandidate","Recruiter")">
+
+            <span style="color:red;margin-bottom:5px;">@ViewBag.Error</span>
+
+            <div class="row">
+                <div class="col-md-6">
+
+                    <input type="hidden" name="RecId" id="Recid" value="@Model.RecId" />
+                    <input type="hidden" name="ResumeSourceId" id="Recid" value="@Model.ResumeSourceId" />
+
+                    @Html.HiddenFor(x => x.CanId)
+                    <input type="hidden" name="IsActive" id="IsActive" value="true" />
+                    <label>First Name</label>
+                    @Html.TextBoxFor(x => x.FirstName, new { required = "required", @placeholder = "Enter Frist Name", @class = "form-control" })
+                    <label>Last Name</label>
+                    @Html.TextBoxFor(x => x.LastName, new { required = "required", @placeholder = "Enter Last Name", @class = "form-control" })
+                    <label>Middle Name</label>
+                    @Html.TextBoxFor(x => x.MiddleName, new { required = "required", @placeholder = "Enter Middle Name", @class = "form-control" })
+                    <label>Email</label>
+                    @Html.TextBoxFor(x => x.Email, new { required = "required", @placeholder = "Enter Email", @class = "form-control" })
+                    <label>Mobile Number</label>
+                    @Html.TextBoxFor(x => x.MobileNumber, new { required = "required", @placeholder = "Enter Mobile Number", @class = "form-control" })
+                    <label>Secondary Phone</label>
+                    @Html.TextBoxFor(x => x.SecondaryPhone, new { required = "required", @placeholder = "Enter Secondary Phone", @class = "form-control" })
+                    <label>Next of Kin Name</label>
+                    @Html.TextBoxFor(x => x.NextofKinName, new { @placeholder = "Enter Next of Kin Name", @class = "form-control" })
+                    <label>Next of Kin Phone</label>
+                    @Html.TextBoxFor(x => x.NextofKinPhone, new { @placeholder = "Enter Next of Kin Phone", @class = "form-control" })
+                    <label>In Case Of Emergency</label>
+                    @Html.TextBoxFor(x => x.InCaseOfEmergency, new { required = "required", @placeholder = "Enter In Case Of Emergency", @class = "form-control" })
+                    <label>Experience</label>
+                    @Html.TextBoxFor(x => x.Experience, new { required = "required", @placeholder = "Enter Experience", @class = "form-control" })
+                    <label>Qualification</label>
+                    @Html.TextBoxFor(x => x.Qualification, new { required = "required", @placeholder = "Enter Qualification", @class = "form-control" })
+                    <label>Qualification Type</label>
+                    <select id="QualificationType" name="QualificationType" class="form-control" required>
+                        <option value="">Select Qualification Type</option>
+                        <option value="1" @((Model.QualificationType == "Degree") ? "selected" : "")>Degree</option>
+                        <option value="2" @((Model.QualificationType == "Diploma") ? "selected" : "")>Diploma</option>
+                    </select>
+                    <label>Interests</label>
+                    @Html.TextBoxFor(x => x.Interests, new { required = "required", @placeholder = "Enter Interests", @class = "form-control" })
+                    <label>Description</label>
+                    @Html.TextBoxFor(x => x.Description, new { required = "required", @placeholder = "Enter Description", @class = "form-control" })
+                    @*<label>MiddleName</label>
+                    @Html.TextBoxFor(x => x.CreateDate, "{0:dd/MM/yyyy}", new { required = "required", @class = "datefield form-control", @placeholder = "Enter Start date..." })
+                    <label>MiddleName</label>
+                    @Html.TextBoxFor(x => x.UpdateDate, "{0:dd/MM/yyyy}", new { required = "required", @class = "datefield form-control", @placeholder = "Enter Updata date..." })*@
+                    <label>CV File</label>
+                    <input type="file" name="CVFile" id="CVFile" class="form-control" />
+                </div>
+                <div class="col-md-6">
+                    <label>CV Description</label>
+                    @Html.TextBoxFor(x => x.CVDescription, new { required = "required", @border = "2px", @placeholder = "Enter CV Description", @class = "form-control" })
+                    <label>NIC File</label>
+                    <input type="file" name="NICFile" id="NICFile" class="form-control" />
+                    <label>Degree File 1</label>
+                    <input type="file" name="DegreeFile1" id="DegreeFile1" class="form-control" />
+                    <label>Degree File 2</label>
+                    <input type="file" name="DegreeFile2" id="DegreeFile2" class="form-control" />
+                    <label>Degree File 3</label>
+                    <input type="file" name="DegreeFile3" id="DegreeFile3" class="form-control" />
+                    <label>Degree File 4</label>
+                    <input type="file" name="DegreeFile4" id="DegreeFile4" class="form-control" />
+                    <label>Passport File</label>
+                    <input type="file" name="PassportFile" id="PassportFile" class="form-control" />
+                    <label>Father Name</label>
+                    @Html.TextBoxFor(x => x.FatherName, new { required = "required", @placeholder = "Enter Father Name", @class = "form-control" })
+                    <label>Religion</label>
+                    @Html.TextBoxFor(x => x.Religion, new { required = "required", @placeholder = "Enter Religion", @class = "form-control" })
+                    <label>Gender</label>
+                    @Html.TextBoxFor(x => x.Gender, new { required = "required", @placeholder = "Enter Gender", @class = "form-control" })
+                    <label>Recruitment Status</label>
+                    @Html.TextBoxFor(x => x.RecruitmentStatus, new { required = "required", @placeholder = "Enter Recruitment Status", @class = "form-control" })
+                    <label>Resume Source</label>
+                    @Html.TextBoxFor(x => x.ResumeSource, new { required = "required", @placeholder = "Enter Resume Source", @class = "form-control" })
+                    <label>Application Type</label>
+                    @Html.TextBoxFor(x => x.ApplicationType, new { required = "required", @placeholder = "Enter Application Type", @class = "form-control" })
+                    <label>Marks Obtained</label>
+                    @Html.TextBoxFor(x => x.MarksObtained, new { @placeholder = "See Marks Obtained", @class = "form-control" })<br />
+                    <div class="col-md-2">
+                        <label>IsQualified</label>
+                        <input type="checkbox" id="IsPosted" name="IsPosted" value="" @((Model.IsQualified == true) ? "checked" : "") class="form-control" style="width:50px" />
+                    </div>
+                    <div class="col-md-2">
+                        <label>IsQualified</label>
+                        <input type="checkbox" id="IsPosted" name="IsPosted" value="" @((Model.IsQualified == true) ? "checked" : "") class="form-control" style="width:50px" />
+                    </div>
+
+                </div>
+            </div>
+            <br />
+            <br />
+            <button type="submit" class="btn btn-success">Save Changes</button>
+            <a class="btn btn-danger" href="@Url.Action("Sourcing","Recruiter")">Cancel</a>
+        </form>
+
+    </div>
+
+</div>
+
+
+

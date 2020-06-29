@@ -1,0 +1,115 @@
+﻿@model MyRecruitingAgent.Models.Job
+@{
+    ViewBag.Title = "AddJobs";
+    Layout = "~/Views/Shared/_LayoutRec.cshtml";
+}
+
+
+<div class="row">
+    <div class="col-md-12">
+        <h2>Add/Edit Job</h2>
+
+
+        <form method="post" action="@Url.Action("AddJobs","Recruiter")">
+
+            <span style="color:red;margin-top:5px;">@ViewBag.Error</span>
+            <div class="row">
+
+            <div class="col-md-6">
+                <input type="hidden" name="RecId" id="Recid" value="@Model.RecId" />
+                @Html.HiddenFor(x => x.JobId)
+                <label>Job Name</label>
+                @Html.TextBoxFor(x => x.JobName, new { @placeholder = "Enter Job Name", @class = "form-control" })
+                <br />
+                <label>Job Description</label>
+                @Html.TextBoxFor(x => x.JobDescription, new { @placeholder = "Enter the Job Description", @maxlength = "300", @class = "form-control" })
+                <br />
+                <label>Job Location</label>
+                @Html.TextBoxFor(x => x.JobLocation, new { @placeholder = "Enter the Job Location", @maxlength = "15", @class = "form-control" })
+                <br />
+                <label>City</label>
+                @Html.TextBoxFor(x => x.JobCity, new { @placeholder = "Enter the Job City", @maxlength = "10", @class = "form-control" })
+                <br />
+                <label>State</label>
+                @Html.TextBoxFor(x => x.JobState, new { @placeholder = "Enter the State", @maxlength = "10", @class = "form-control" })
+                <br />
+                <label>Country</label>
+                @Html.TextBoxFor(x => x.JobCountry, new { @placeholder = "Enter the Country", @maxlength = "10", @class = "form-control" })
+                <br />
+                <label>Job Intro</label>
+                @Html.TextBoxFor(x => x.JobIntro, new { @placeholder = "Enter the Job Introdution", @class = "form-control" })
+                <br />
+                <label>Experience</label>
+                @Html.TextBoxFor(x => x.Experience, new { @placeholder = "Experience", @class = "form-control" })
+
+            </div>
+            <div class="col-md-6">
+
+
+                @*@Html.TextBoxFor(x => x.Experience, new { @placeholder = "Experience", @class = "form-control" })*@
+                <label>Qualification</label>
+                @Html.TextBoxFor(x => x.Qualification, new { @placeholder = "Qualification", @class = "form-control" })
+                <br />
+                <label>Qualification Type</label>
+                <select id="QualificationType" name="QualificationType" class="form-control" required>
+                    <option value="">Select Qualification Type</option>
+                    <option value="1" @((Model.QualificationType == 1) ? "selected" : "")>Degree</option>
+                    <option value="2" @((Model.QualificationType == 2) ? "selected" : "")>Diploma</option>
+                </select>
+                @*@Html.TextBoxFor(x => x.QualificationType, new { @placeholder = "Qualification Type", @class = "form-control" })*@
+                <br />
+                <label>Job Type</label>
+                <select id="JobType" name="JobType" class="form-control" required>
+                    <option value="">Select Job Type</option>
+                    <option value="Contract" @((Model.JobType == "Contract") ? "selected" : "")>Contract</option>
+                    <option value="Permanent" @((Model.JobType == "Permanent") ? "selected" : "")>Permanent</option>
+                </select>
+                @*@Html.TextBoxFor(x => x.JobType, new { @placeholder = "Job Type", @class = "form-control" })*@
+                <br />
+                <label>Job Salary</label>
+                @Html.TextBoxFor(x => x.JobSalary, new { @placeholder = "Job Salary", @class = "form-control" })
+                <br />
+                <label>Salary Currency</label>
+                @Html.TextBoxFor(x => x.Currency, new { @placeholder = "Currency", @class = "form-control" })
+                <br />
+                <label>Questionair</label>
+                @Html.TextBoxFor(x => x.QuestionairId, new { @class = "form-control" })
+                <br />
+                <div class="col-md-2">
+                    <label>IsPosted</label>
+                    <input type="checkbox" id="IsPosted" name="IsPosted" value="" @((Model.IsPosted == true) ? "checked" : "") class="form-control" style="width:50px" />
+                </div>
+                <div class="col-md-2">
+
+                    <label>IsActive</label>
+                    <input type="checkbox" name="IsActive" id="IsActive" value="" @((Model.IsActive == true) ? "checked" : "") class="form-control" style="width:50px" />
+                </div>
+                <div class="col-md-2">
+
+                    <label>IsClosed</label>
+                    <input type="checkbox" name="IsClosed" id="IsClosed" value="" @((Model.IsPosted == true) ? "checked" : "") class="form-control" style="width:50px" />
+                </div>
+                <div class="col-md-2">
+
+                    <label>IsDeleted</label>
+                    <input type="checkbox" name="IsDeleted" id="IsDeleted" value="" @((Model.IsDeleted == true) ? "checked" : "") class="form-control" style="width:50px" />
+                </div>
+                <div class="col-md-2">
+                    <label>IsReposted</label>
+                    <input type="checkbox" name="IsReposted" id="IsReposted" value="" @((Model.IsReposted == true) ? "checked" : "") class="form-control" style="width:50px" />
+                </div>
+            </div>
+            </div>
+
+            <br />
+            <br />
+
+            <button type="submit" class="btn btn-success">Save Changes</button>
+            <a class="btn btn-danger" href="@Url.Action("Jobs","Recruiter")">Cancel</a>
+        </form>
+    </div>
+
+</div>
+<script>
+
+</script>

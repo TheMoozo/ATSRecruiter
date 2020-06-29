@@ -1,0 +1,87 @@
+﻿@model List<MyRecruitingAgent.Models.Answer>
+@{
+    ViewBag.Title = "Answers";
+    Layout = "~/Views/Shared/_LayoutRec.cshtml";
+    int counter = 0;
+}
+<div class="row">
+<h2>Answers</h2>
+    <a class="btn btn-primary btn-xs mb-5" href="javascript:;" onclick="loadpopup('0', '', 'false')" data-toggle="modal" data-target="#AnswerIdPopUp"><i class="fa fa-plus"></i> Add New</a>
+
+
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Sr.No</th>
+                <th>Answers</th>
+                <th>IsCorrect</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            @foreach (var item in Model)
+            {
+                counter++;
+                <tr>
+                    <td>@counter</td>
+                    <td>@item.Answer1</td>
+                    <td style="color:@((item.IsRight)?"green":"red")">@((item.IsRight) ? "Correct" : "Incorrect")</td>
+                    <td>
+                        <div class="btn-group">
+                            <a href="javascript:;" onclick='loadpopup("@item.AnswerId", "@item.Answer1", "@item.IsRight.ToString()")' data-toggle="modal" data-target="#AnswerIdPopUp" class="btn btn-success btn-xs"><i class="fa fa-edit"></i> Edit</a>
+
+                            <a href="@Url.Action("IsRightAnswers","Recruiter",new { QuestionId = item.QuestionId, AnswerId = item.AnswerId, Value = true })" class="btn btn-info btn-xs"><i class="fa fa-check"></i> &nbsp;</a>
+                            <a href="@Url.Action("IsRightAnswers","Recruiter",new { QuestionId = item.QuestionId, AnswerId = item.AnswerId, Value = false })" class="btn btn-danger btn-xs"><i class="fa fa-times"></i> &nbsp;</a>
+                        </div>
+                    </td>
+                </tr>
+
+            }
+        </tbody>
+    </table>
+</div>
+
+
+<div class="modal" id="AnswerIdPopUp" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Add / Edit Answer</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form action="@Url.Action("AddAnswer","Recruiter")" method="post">
+                <div class="modal-body">
+                    <span style="color:red;margin-bottom:5px;">@ViewBag.Error</span>
+                    <input type="hidden" class="form-control" id="AnswerId" name="AnswerId" />
+                    <input type="hidden" class="form-control" id="QuestionId" name="QuestionId" value="@ViewBag.QuestionId" />
+                    <input type="hidden" class="form-control" id="IsActive" name="IsActive" value="true" />
+                    <input type="hidden" class="form-control" id="IsRight" name="IsRight" />
+                    <label style="text-align:start">Answer</label>
+                    <input type="text" name="Answer1" id="Answer1" class="form-control" required />
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger btn-xs" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-success btn-xs">Save changes</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<script>
+    function loadpopup(AnswerId, Name, IsRight) {
+
+        debugger;
+        $("#Answer1").val("");
+        $("#AnswerId").val(0);
+        $("#IsRight").val("");
+
+        $("#Answer1").val(Name);
+        $("#AnswerId").val(AnswerId);
+        $("#IsRight").val(IsRight);
+    }
+
+</script>

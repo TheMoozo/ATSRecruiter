@@ -1,0 +1,80 @@
+﻿@using MyRecruitingAgent.Models
+@model List<MyRecruitingAgent.Models.Questionair>
+@{
+    ViewBag.Title = "Questioner";
+    Layout = "~/Views/Shared/_LayoutRec.cshtml";
+    int counter = 0;
+}
+
+<div class="row">
+<h2>Questioner</h2>
+    <a class="btn btn-primary btn-xs mb-5" href="javascript:;" onclick="loadpopup('0','')" data-toggle="modal" data-target="#QuestionairIdPopUp"><i class="fa fa-plus"></i> Add New</a>
+
+
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Sr.No</th>
+                <th>Questionair Name</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            @foreach (var item in Model)
+            {
+                counter++;
+                <tr>
+                    <td>@counter</td>
+                    <td>@item.Name</td>
+                    <td>
+                        <div class="btn-group">
+                            <a href="javascript:;" onclick="loadpopup('@item.QuestionairId','@item.Name')" data-toggle="modal" data-target="#QuestionairIdPopUp" class="btn btn-success btn-xs"><i class="fa fa-edit"></i> Edit</a>
+                            <a href="@Url.Action("Questions","Recruiter",new { QuestionairId = item.QuestionairId })" class="btn btn-info btn-xs"><i class="fa fa-list"></i> Questions</a>
+                        </div>
+                    </td>
+                </tr>
+
+            }
+        </tbody>
+    </table>
+</div>
+
+<div class="modal" id="QuestionairIdPopUp" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Add / Edit Questionair</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form action="@Url.Action("Questioner","Recruiter")" method="post">
+                <div class="modal-body">
+                    <span style="color:red;margin-bottom:5px;">@ViewBag.Error</span>
+                    <input type="hidden" class="form-control" id="QuestionairId" name="QuestionairId" />
+                    <input type="hidden" class="form-control" id="RecId" name="RecId" value="@LoginHelper.GetCurrentLoginUser().Id" />
+                    <input type="hidden" class="form-control" id="IsActive" name="IsActive" value="true" />
+                    <label style="text-align:start">Name</label>
+                    <input type="text" name="Name" id="Name" class="form-control" required />
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger btn-xs" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-success btn-xs">Save changes</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<script>
+    function loadpopup(QuestionairId, Name) {
+
+        debugger;
+        $("#Name").val("");
+        $("#QuestionairId").val(0);
+
+        $("#Name").val(Name);
+        $("#QuestionairId").val(QuestionairId);
+    }
+</script>

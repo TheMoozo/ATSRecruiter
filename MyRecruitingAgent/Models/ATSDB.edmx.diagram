@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="a2654760926f4e12b71172eaede4f67b" Name="Diagram1" ZoomLevel="47">
+        <EntityTypeShape EntityType="ATSModel.Account" Width="1.5" PointX="5.25" PointY="18" IsExpanded="true" />
+        <EntityTypeShape EntityType="ATSModel.Admin" Width="1.5" PointX="0.75" PointY="31.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ATSModel.AdminKey" Width="1.5" PointX="3" PointY="14.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ATSModel.Answer" Width="1.5" PointX="9.75" PointY="51.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ATSModel.Applicant" Width="1.5" PointX="12.75" PointY="45.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ATSModel.Candidate" Width="1.5" PointX="7.5" PointY="41" IsExpanded="true" />
+        <EntityTypeShape EntityType="ATSModel.CandidateQualification" Width="1.5" PointX="9.75" PointY="46.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ATSModel.CandidateSkill" Width="1.5" PointX="9.75" PointY="54.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ATSModel.DripEmail" Width="1.5" PointX="5.25" PointY="31.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ATSModel.EmailTemplate" Width="1.5" PointX="5.25" PointY="37.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ATSModel.Job" Width="1.5" PointX="10.5" PointY="39.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ATSModel.Plan" Width="1.5" PointX="6" PointY="28.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ATSModel.Platform" Width="1.5" PointX="10.5" PointY="35.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ATSModel.PostedJob" Width="1.5" PointX="12.75" PointY="41" IsExpanded="true" />
+        <EntityTypeShape EntityType="ATSModel.Qualification" Width="1.5" PointX="5.25" PointY="48.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ATSModel.Questionair" Width="1.5" PointX="5.25" PointY="51.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ATSModel.Recruiter" Width="1.5" PointX="3" PointY="31.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ATSModel.RecSMTP" Width="1.5" PointX="5.25" PointY="54.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ATSModel.ResumeSource" Width="1.5" PointX="5.25" PointY="59.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ATSModel.Skill" Width="1.5" PointX="5.25" PointY="62" IsExpanded="true" />
+        <EntityTypeShape EntityType="ATSModel.sysdiagram" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ATSModel.Ticket" Width="1.5" PointX="5.25" PointY="64.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ATSModel.TicketResponse" Width="1.5" PointX="7.5" PointY="65.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ATSModel.UserPlan" Width="1.5" PointX="8.25" PointY="33.25" IsExpanded="true" />
+        <AssociationConnector Association="ATSModel.FK_Accounts_Recruiter" ManuallyRouted="false" />
+        <AssociationConnector Association="ATSModel.FK_AdminKeys_Admin" ManuallyRouted="false" />
+        <AssociationConnector Association="ATSModel.FK_Recruiter_Admin" ManuallyRouted="false" />
+        <AssociationConnector Association="ATSModel.FK_Applicant_Candidate" ManuallyRouted="false" />
+        <AssociationConnector Association="ATSModel.FK_Applicant_Jobs" ManuallyRouted="false" />
+        <AssociationConnector Association="ATSModel.FK_Candidate_Recruiter" ManuallyRouted="false" />
+        <AssociationConnector Association="ATSModel.FK_Candidate_ResumeSource" ManuallyRouted="false" />
+        <AssociationConnector Association="ATSModel.FK_CandidateQualification_Candidate" ManuallyRouted="false" />
+        <AssociationConnector Association="ATSModel.FK_CandidateSkills_Candidate" ManuallyRouted="false" />
+        <AssociationConnector Association="ATSModel.FK_CandidateQualification_Qualification" ManuallyRouted="false" />
+        <AssociationConnector Association="ATSModel.FK_CandidateSkills_Skills" ManuallyRouted="false" />
+        <AssociationConnector Association="ATSModel.FK_DripEmails_Recruiter" ManuallyRouted="false" />
+        <AssociationConnector Association="ATSModel.FK_EmailTemplates_Recruiter" ManuallyRouted="false" />
+        <AssociationConnector Association="ATSModel.FK_Jobs_Questionair" ManuallyRouted="false" />
+        <AssociationConnector Association="ATSModel.FK_Jobs_Recruiter" ManuallyRouted="false" />
+        <AssociationConnector Association="ATSModel.FK_PostedJobs_Jobs" ManuallyRouted="false" />
+        <AssociationConnector Association="ATSModel.FK_UserPlan_Plan" ManuallyRouted="false" />
+        <AssociationConnector Association="ATSModel.FK_PostedJobs_Platforms" ManuallyRouted="false" />
+        <AssociationConnector Association="ATSModel.FK_Qualification_Recruiter" ManuallyRouted="false" />
+        <AssociationConnector Association="ATSModel.FK_Questionair_Recruiter" ManuallyRouted="false" />
+        <AssociationConnector Association="ATSModel.FK_RecSMTP_Recruiter" ManuallyRouted="false" />
+        <AssociationConnector Association="ATSModel.FK_ResumeSource_Recruiter" ManuallyRouted="false" />
+        <AssociationConnector Association="ATSModel.FK_Skills_Recruiter" ManuallyRouted="false" />
+        <AssociationConnector Association="ATSModel.FK_Ticket_Recruiter" ManuallyRouted="false" />
+        <AssociationConnector Association="ATSModel.FK_UserPlan_Recruiter" ManuallyRouted="false" />
+        <AssociationConnector Association="ATSModel.FK_TicketResponse_Ticket" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="ATSModel.Question" Width="1.5" PointX="7.5" PointY="51.25" />
+        <AssociationConnector Association="ATSModel.FK_Answers_Questions" />
+        <AssociationConnector Association="ATSModel.FK_Questions_Questionair" />
+        <EntityTypeShape EntityType="ATSModel.CareerPage" Width="1.5" PointX="5.25" PointY="41.25" />
+        <AssociationConnector Association="ATSModel.FK_CareerPages_Recruiter" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

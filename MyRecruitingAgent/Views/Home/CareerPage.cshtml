@@ -1,0 +1,33 @@
+﻿@model MyRecruitingAgent.Models.ViewModels.CareerPageViewModel
+@{
+    ViewBag.Title = "CareerPage";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="row">
+    <br />
+    <img class="img-responsive pt-5 pb-5 pl-0 pr-5" src="~/Content/Images/ExternalLogo/@Model.RecruiterObj.RecId/@Model.CareerPageObj.ExternalLogo" style="max-height:100px;">
+    <div class="row">
+
+        <div class="col-md-8">
+            <div><h3>@Model.CareerPageObj.Heading</h3></div>
+            <br />
+            <div><h4><strong>@Model.CareerPageObj.Intro</strong></h4></div>
+            <br />
+            <div id="Description">
+                @Html.Raw(Model.CareerPageObj.Description)
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div><h3>Job List</h3></div>
+            <ul class="list-group">
+                @foreach (var item in Model.JobsList)
+                {
+                    <li class="list-group-item"><a href="@Url.Action("JobApplicationPage","Home",new { Recruiter = Model.RecruiterObj.RecId, Job = item.JobId })" style="text-decoration:none !important">@item.JobName</a></li>
+
+                }
+            </ul>
+        </div>
+    </div>
+</div>
